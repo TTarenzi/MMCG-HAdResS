@@ -1,0 +1,12 @@
+libdir=/data/pckr144/potestio/hadressmacs/debug_hadress/lib
+includedir=/data/pckr144/potestio/hadressmacs/debug_hadress/include
+
+Name: libgmxana
+Description: Gromacs analysis lib
+URL: http://www.gromacs.org
+Version: 4.6-dev
+Requires:  libgmx libmd
+Libs.private: -lm -lpthread
+Libs: -L${libdir} -lgmxana
+Cflags: -I${includedir}  -DGMX_SOFTWARE_INVSQRT -DGMX_THREADS
+

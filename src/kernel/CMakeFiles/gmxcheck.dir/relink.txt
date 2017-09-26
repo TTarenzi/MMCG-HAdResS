@@ -1,0 +1,1 @@
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused   -fno-inline  -g     CMakeFiles/gmxcheck.dir/gmxcheck.c.o  -o CMakeFiles/CMakeRelink.dir/gmxcheck -rdynamic -ldl -lm libgmxpreprocess.so.6 ../mdlib/libmd.so.6 ../gmxlib/libgmx.so.6 -ldl -lm -lpthread -lfftw3f -lxml2 -Wl,-rpath,/data/pckr144/potestio/hadressmacs/debug_hadress/lib 

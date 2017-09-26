@@ -1,0 +1,1118 @@
+The system is: Linux - 3.4.28-2.20-desktop - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1004250189/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1004250189.dir/build.make CMakeFiles/cmTryCompileExec1004250189.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1004250189.dir/testCCompiler.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec1004250189.dir/testCCompiler.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec1004250189
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1004250189.dir/link.txt --verbose=1
+/usr/bin/gcc         CMakeFiles/cmTryCompileExec1004250189.dir/testCCompiler.c.o  -o cmTryCompileExec1004250189 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2632837006/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2632837006.dir/build.make CMakeFiles/cmTryCompileExec2632837006.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec2632837006
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2632837006.dir/link.txt --verbose=1
+/usr/bin/gcc       -v CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2632837006 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.7/lto-wrapper
+Target: x86_64-suse-linux
+Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.7 --enable-ssp --disable-libssp --disable-libitm --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --program-suffix=-4.7 --enable-linux-futex --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux
+Thread model: posix
+gcc version 4.7.1 20120723 [gcc-4_7-branch revision 189773] (SUSE Linux) 
+COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/bin/
+LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2632837006' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib64/gcc/x86_64-suse-linux/4.7/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec2632837006 /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.7 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../.. CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/4.7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec2632837006/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2632837006.dir/build.make CMakeFiles/cmTryCompileExec2632837006.dir/build]
+  ignore line: [gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec2632837006]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2632837006.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/gcc       -v CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2632837006 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.7/lto-wrapper]
+  ignore line: [Target: x86_64-suse-linux]
+  ignore line: [Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.7 --enable-ssp --disable-libssp --disable-libitm --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --program-suffix=-4.7 --enable-linux-futex --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.1 20120723 [gcc-4_7-branch revision 189773] (SUSE Linux) ]
+  ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/bin/]
+  ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2632837006' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib64/gcc/x86_64-suse-linux/4.7/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec2632837006 /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.7 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../.. CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/4.7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crtn.o]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2632837006] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crt1.o] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crti.o] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/crtbegin.o] ==> ignore
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../..]
+    arg [CMakeFiles/cmTryCompileExec2632837006.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/crtend.o] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7] ==> [/usr/lib64/gcc/x86_64-suse-linux/4.7]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64] ==> [/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib] ==> [/usr/x86_64-suse-linux/lib]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../..] ==> [/usr/lib64]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib64/gcc/x86_64-suse-linux/4.7;/usr/lib64;/lib64;/usr/x86_64-suse-linux/lib]
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4211761263/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4211761263.dir/build.make CMakeFiles/cmTryCompileExec4211761263.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec4211761263.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec4211761263.dir/testCXXCompiler.cxx.o -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec4211761263
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4211761263.dir/link.txt --verbose=1
+/usr/bin/c++          CMakeFiles/cmTryCompileExec4211761263.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec4211761263 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2051495810/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2051495810.dir/build.make CMakeFiles/cmTryCompileExec2051495810.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec2051495810
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2051495810.dir/link.txt --verbose=1
+/usr/bin/c++        -v CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2051495810 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.7/lto-wrapper
+Target: x86_64-suse-linux
+Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.7 --enable-ssp --disable-libssp --disable-libitm --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --program-suffix=-4.7 --enable-linux-futex --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux
+Thread model: posix
+gcc version 4.7.1 20120723 [gcc-4_7-branch revision 189773] (SUSE Linux) 
+COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/bin/
+LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2051495810' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib64/gcc/x86_64-suse-linux/4.7/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec2051495810 /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.7 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../.. CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/4.7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec2051495810/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2051495810.dir/build.make CMakeFiles/cmTryCompileExec2051495810.dir/build]
+  ignore line: [gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec2051495810]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2051495810.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++        -v CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2051495810 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.7/lto-wrapper]
+  ignore line: [Target: x86_64-suse-linux]
+  ignore line: [Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.7 --enable-ssp --disable-libssp --disable-libitm --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --program-suffix=-4.7 --enable-linux-futex --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.1 20120723 [gcc-4_7-branch revision 189773] (SUSE Linux) ]
+  ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/bin/]
+  ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.7/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2051495810' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib64/gcc/x86_64-suse-linux/4.7/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec2051495810 /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.7 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../.. CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/4.7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crtn.o]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2051495810] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crt1.o] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crti.o] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/crtbegin.o] ==> ignore
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.7/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../..]
+    arg [CMakeFiles/cmTryCompileExec2051495810.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/crtend.o] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7] ==> [/usr/lib64/gcc/x86_64-suse-linux/4.7]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64] ==> [/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/lib] ==> [/usr/x86_64-suse-linux/lib]
+  collapse dir [/usr/lib64/gcc/x86_64-suse-linux/4.7/../../..] ==> [/usr/lib64]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib64/gcc/x86_64-suse-linux/4.7;/usr/lib64;/lib64;/usr/x86_64-suse-linux/lib]
+
+
+Performing C SOURCE FILE Test CFLAGS_WARN succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec572152861/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec572152861.dir/build.make CMakeFiles/cmTryCompileExec572152861.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec572152861.dir/src.c.o
+/usr/bin/gcc   -DCFLAGS_WARN   -Wall -Wno-unused -o CMakeFiles/cmTryCompileExec572152861.dir/src.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec572152861
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec572152861.dir/link.txt --verbose=1
+/usr/bin/gcc     -DCFLAGS_WARN    CMakeFiles/cmTryCompileExec572152861.dir/src.c.o  -o cmTryCompileExec572152861 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test CFLAGS_EXCESS_PREC succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1912061546/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1912061546.dir/build.make CMakeFiles/cmTryCompileExec1912061546.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1912061546.dir/src.c.o
+/usr/bin/gcc   -DCFLAGS_EXCESS_PREC   -fexcess-precision=fast -o CMakeFiles/cmTryCompileExec1912061546.dir/src.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec1912061546
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1912061546.dir/link.txt --verbose=1
+/usr/bin/gcc     -DCFLAGS_EXCESS_PREC    CMakeFiles/cmTryCompileExec1912061546.dir/src.c.o  -o cmTryCompileExec1912061546 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test CFLAGS_COPT succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec942318341/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec942318341.dir/build.make CMakeFiles/cmTryCompileExec942318341.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec942318341.dir/src.c.o
+/usr/bin/gcc   -DCFLAGS_COPT   -fomit-frame-pointer -finline-functions -funroll-all-loops -o CMakeFiles/cmTryCompileExec942318341.dir/src.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec942318341
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec942318341.dir/link.txt --verbose=1
+/usr/bin/gcc     -DCFLAGS_COPT    CMakeFiles/cmTryCompileExec942318341.dir/src.c.o  -o cmTryCompileExec942318341 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test CFLAGS_NOINLINE succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3175763143/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3175763143.dir/build.make CMakeFiles/cmTryCompileExec3175763143.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3175763143.dir/src.c.o
+/usr/bin/gcc   -DCFLAGS_NOINLINE   -fno-inline -o CMakeFiles/cmTryCompileExec3175763143.dir/src.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec3175763143
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3175763143.dir/link.txt --verbose=1
+/usr/bin/gcc     -DCFLAGS_NOINLINE    CMakeFiles/cmTryCompileExec3175763143.dir/src.c.o  -o cmTryCompileExec3175763143 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXXFLAGS_WARN succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3701136499/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3701136499.dir/build.make CMakeFiles/cmTryCompileExec3701136499.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3701136499.dir/src.cxx.o
+/usr/bin/c++    -DCXXFLAGS_WARN   -Wall -Wno-unused -o CMakeFiles/cmTryCompileExec3701136499.dir/src.cxx.o -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3701136499
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3701136499.dir/link.txt --verbose=1
+/usr/bin/c++      -DCXXFLAGS_WARN    CMakeFiles/cmTryCompileExec3701136499.dir/src.cxx.o  -o cmTryCompileExec3701136499 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C++ SOURCE FILE Test CXXFLAGS_EXCESS_PREC succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2970381923/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2970381923.dir/build.make CMakeFiles/cmTryCompileExec2970381923.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2970381923.dir/src.cxx.o
+/usr/bin/c++    -DCXXFLAGS_EXCESS_PREC   -fexcess-precision=fast -o CMakeFiles/cmTryCompileExec2970381923.dir/src.cxx.o -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2970381923
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2970381923.dir/link.txt --verbose=1
+/usr/bin/c++      -DCXXFLAGS_EXCESS_PREC    CMakeFiles/cmTryCompileExec2970381923.dir/src.cxx.o  -o cmTryCompileExec2970381923 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C++ SOURCE FILE Test CXXFLAGS_COPT succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1131147962/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1131147962.dir/build.make CMakeFiles/cmTryCompileExec1131147962.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1131147962.dir/src.cxx.o
+/usr/bin/c++    -DCXXFLAGS_COPT   -fomit-frame-pointer -finline-functions -funroll-all-loops -o CMakeFiles/cmTryCompileExec1131147962.dir/src.cxx.o -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1131147962
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1131147962.dir/link.txt --verbose=1
+/usr/bin/c++      -DCXXFLAGS_COPT    CMakeFiles/cmTryCompileExec1131147962.dir/src.cxx.o  -o cmTryCompileExec1131147962 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C++ SOURCE FILE Test CXXFLAGS_NOINLINE succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec167819506/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec167819506.dir/build.make CMakeFiles/cmTryCompileExec167819506.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec167819506.dir/src.cxx.o
+/usr/bin/c++    -DCXXFLAGS_NOINLINE   -fno-inline -o CMakeFiles/cmTryCompileExec167819506.dir/src.cxx.o -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec167819506
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec167819506.dir/link.txt --verbose=1
+/usr/bin/c++      -DCXXFLAGS_NOINLINE    CMakeFiles/cmTryCompileExec167819506.dir/src.cxx.o  -o cmTryCompileExec167819506 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Determining if files string.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3078922007/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3078922007.dir/build.make CMakeFiles/cmTryCompileExec3078922007.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3078922007.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3078922007.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3078922007
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3078922007.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3078922007.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3078922007 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files math.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3321381324/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3321381324.dir/build.make CMakeFiles/cmTryCompileExec3321381324.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3321381324.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3321381324.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3321381324
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3321381324.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3321381324.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3321381324 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files limits.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2335182438/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2335182438.dir/build.make CMakeFiles/cmTryCompileExec2335182438.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2335182438.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec2335182438.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2335182438
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2335182438.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec2335182438.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2335182438 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files memory.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec633101499/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec633101499.dir/build.make CMakeFiles/cmTryCompileExec633101499.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec633101499.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec633101499.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec633101499
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec633101499.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec633101499.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec633101499 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files unistd.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1473758395/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1473758395.dir/build.make CMakeFiles/cmTryCompileExec1473758395.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1473758395.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1473758395.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1473758395
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1473758395.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1473758395.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1473758395 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files pwd.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3758911249/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3758911249.dir/build.make CMakeFiles/cmTryCompileExec3758911249.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3758911249.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3758911249.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3758911249
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3758911249.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3758911249.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3758911249 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files stdint.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3985038946/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3985038946.dir/build.make CMakeFiles/cmTryCompileExec3985038946.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3985038946.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3985038946.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3985038946
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3985038946.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3985038946.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3985038946 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files stdlib.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec493999187/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec493999187.dir/build.make CMakeFiles/cmTryCompileExec493999187.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec493999187.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec493999187.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec493999187
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec493999187.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec493999187.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec493999187 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2853738885/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2853738885.dir/build.make CMakeFiles/cmTryCompileExec2853738885.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2853738885.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec2853738885.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2853738885
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2853738885.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec2853738885.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2853738885 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files dirent.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3387064419/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3387064419.dir/build.make CMakeFiles/cmTryCompileExec3387064419.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3387064419.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3387064419.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3387064419
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3387064419.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3387064419.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3387064419 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files inttypes.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3026051801/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3026051801.dir/build.make CMakeFiles/cmTryCompileExec3026051801.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3026051801.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3026051801.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3026051801
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3026051801.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3026051801.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3026051801 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files regex.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2588124764/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2588124764.dir/build.make CMakeFiles/cmTryCompileExec2588124764.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2588124764.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec2588124764.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2588124764
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2588124764.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec2588124764.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2588124764 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/types.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1250363472/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1250363472.dir/build.make CMakeFiles/cmTryCompileExec1250363472.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1250363472.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1250363472.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1250363472
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1250363472.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1250363472.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1250363472 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/stat.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec66136910/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec66136910.dir/build.make CMakeFiles/cmTryCompileExec66136910.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec66136910.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec66136910.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec66136910
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec66136910.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec66136910.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec66136910 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/time.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3449720789/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3449720789.dir/build.make CMakeFiles/cmTryCompileExec3449720789.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3449720789.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3449720789.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3449720789
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3449720789.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3449720789.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3449720789 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files rpc/rpc.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3448688716/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3448688716.dir/build.make CMakeFiles/cmTryCompileExec3448688716.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3448688716.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3448688716.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3448688716
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3448688716.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3448688716.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3448688716 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files rpc/rpc.h;rpc/xdr.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3817016295/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3817016295.dir/build.make CMakeFiles/cmTryCompileExec3817016295.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3817016295.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3817016295.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3817016295
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3817016295.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3817016295.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3817016295 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files xmmintrin.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1243331444/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1243331444.dir/build.make CMakeFiles/cmTryCompileExec1243331444.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1243331444.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1243331444.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1243331444
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1243331444.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1243331444.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1243331444 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files emmintrin.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1127581870/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1127581870.dir/build.make CMakeFiles/cmTryCompileExec1127581870.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1127581870.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1127581870.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1127581870
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1127581870.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1127581870.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1127581870 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcasecmp exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec213204474/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec213204474.dir/build.make CMakeFiles/cmTryCompileExec213204474.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec213204474.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=strcasecmp   -o CMakeFiles/cmTryCompileExec213204474.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘strcasecmp’ [enabled by default]
+Linking C executable cmTryCompileExec213204474
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec213204474.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=strcasecmp    CMakeFiles/cmTryCompileExec213204474.dir/CheckFunctionExists.c.o  -o cmTryCompileExec213204474 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strdup exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3419374120/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3419374120.dir/build.make CMakeFiles/cmTryCompileExec3419374120.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3419374120.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=strdup   -o CMakeFiles/cmTryCompileExec3419374120.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘strdup’ [enabled by default]
+Linking C executable cmTryCompileExec3419374120
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3419374120.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=strdup    CMakeFiles/cmTryCompileExec3419374120.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3419374120 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function vprintf exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec606116493/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec606116493.dir/build.make CMakeFiles/cmTryCompileExec606116493.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec606116493.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=vprintf   -o CMakeFiles/cmTryCompileExec606116493.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘vprintf’ [enabled by default]
+Linking C executable cmTryCompileExec606116493
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec606116493.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=vprintf    CMakeFiles/cmTryCompileExec606116493.dir/CheckFunctionExists.c.o  -o cmTryCompileExec606116493 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memcmp exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2148688529/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2148688529.dir/build.make CMakeFiles/cmTryCompileExec2148688529.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2148688529.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=memcmp   -o CMakeFiles/cmTryCompileExec2148688529.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘memcmp’ [enabled by default]
+Linking C executable cmTryCompileExec2148688529
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2148688529.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=memcmp    CMakeFiles/cmTryCompileExec2148688529.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2148688529 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function posix_memalign exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1424516802/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1424516802.dir/build.make CMakeFiles/cmTryCompileExec1424516802.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1424516802.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=posix_memalign   -o CMakeFiles/cmTryCompileExec1424516802.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1424516802
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1424516802.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=posix_memalign    CMakeFiles/cmTryCompileExec1424516802.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1424516802 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function memalign exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec613960719/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec613960719.dir/build.make CMakeFiles/cmTryCompileExec613960719.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec613960719.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=memalign   -o CMakeFiles/cmTryCompileExec613960719.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec613960719
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec613960719.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=memalign    CMakeFiles/cmTryCompileExec613960719.dir/CheckFunctionExists.c.o  -o cmTryCompileExec613960719 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gettimeofday exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1601657127/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1601657127.dir/build.make CMakeFiles/cmTryCompileExec1601657127.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1601657127.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=gettimeofday   -o CMakeFiles/cmTryCompileExec1601657127.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1601657127
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1601657127.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=gettimeofday    CMakeFiles/cmTryCompileExec1601657127.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1601657127 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function isnan exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1481205343/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1481205343.dir/build.make CMakeFiles/cmTryCompileExec1481205343.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1481205343.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=isnan   -o CMakeFiles/cmTryCompileExec1481205343.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘isnan’ [enabled by default]
+Linking C executable cmTryCompileExec1481205343
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1481205343.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=isnan    CMakeFiles/cmTryCompileExec1481205343.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1481205343 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fsync exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1765889045/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1765889045.dir/build.make CMakeFiles/cmTryCompileExec1765889045.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1765889045.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=fsync   -o CMakeFiles/cmTryCompileExec1765889045.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1765889045
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1765889045.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=fsync    CMakeFiles/cmTryCompileExec1765889045.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1765889045 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fileno exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec540154464/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec540154464.dir/build.make CMakeFiles/cmTryCompileExec540154464.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec540154464.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=fileno   -o CMakeFiles/cmTryCompileExec540154464.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec540154464
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec540154464.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=fileno    CMakeFiles/cmTryCompileExec540154464.dir/CheckFunctionExists.c.o  -o cmTryCompileExec540154464 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sqrt exists in the m passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3524236085/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3524236085.dir/build.make CMakeFiles/cmTryCompileExec3524236085.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3524236085.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=sqrt   -o CMakeFiles/cmTryCompileExec3524236085.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘sqrt’ [enabled by default]
+Linking C executable cmTryCompileExec3524236085
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3524236085.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=sqrt    CMakeFiles/cmTryCompileExec3524236085.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3524236085 -rdynamic -lm 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function cbrt exists in the m passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2887195451/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2887195451.dir/build.make CMakeFiles/cmTryCompileExec2887195451.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2887195451.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=cbrt   -o CMakeFiles/cmTryCompileExec2887195451.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: conflicting types for built-in function ‘cbrt’ [enabled by default]
+Linking C executable cmTryCompileExec2887195451
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2887195451.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=cbrt    CMakeFiles/cmTryCompileExec2887195451.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2887195451 -rdynamic -lm 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec303695122/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec303695122.dir/build.make CMakeFiles/cmTryCompileExec303695122.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec303695122.dir/CheckIncludeFile.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec303695122.dir/CheckIncludeFile.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec303695122
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec303695122.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec303695122.dir/CheckIncludeFile.c.o  -o cmTryCompileExec303695122 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of int passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec357580162/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec357580162.dir/build.make CMakeFiles/cmTryCompileExec357580162.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec357580162.dir/SIZEOF_INT.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec357580162.dir/SIZEOF_INT.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/SIZEOF_INT.c
+Linking C executable cmTryCompileExec357580162
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec357580162.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec357580162.dir/SIZEOF_INT.c.o  -o cmTryCompileExec357580162 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of long int passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1049431911/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1049431911.dir/build.make CMakeFiles/cmTryCompileExec1049431911.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1049431911.dir/SIZEOF_LONG_INT.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1049431911.dir/SIZEOF_LONG_INT.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/SIZEOF_LONG_INT.c
+Linking C executable cmTryCompileExec1049431911
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1049431911.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1049431911.dir/SIZEOF_LONG_INT.c.o  -o cmTryCompileExec1049431911 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of long long int passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4191424004/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4191424004.dir/build.make CMakeFiles/cmTryCompileExec4191424004.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4191424004.dir/SIZEOF_LONG_LONG_INT.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec4191424004.dir/SIZEOF_LONG_LONG_INT.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/SIZEOF_LONG_LONG_INT.c
+Linking C executable cmTryCompileExec4191424004
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4191424004.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec4191424004.dir/SIZEOF_LONG_LONG_INT.c.o  -o cmTryCompileExec4191424004 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of off_t passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec422084359/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec422084359.dir/build.make CMakeFiles/cmTryCompileExec422084359.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec422084359.dir/SIZEOF_OFF_T.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec422084359.dir/SIZEOF_OFF_T.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/SIZEOF_OFF_T.c
+Linking C executable cmTryCompileExec422084359
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec422084359.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec422084359.dir/SIZEOF_OFF_T.c.o  -o cmTryCompileExec422084359 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of void * passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1353684090/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1353684090.dir/build.make CMakeFiles/cmTryCompileExec1353684090.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1353684090.dir/SIZEOF_VOIDP.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1353684090.dir/SIZEOF_VOIDP.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/SIZEOF_VOIDP.c
+Linking C executable cmTryCompileExec1353684090
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1353684090.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1353684090.dir/SIZEOF_VOIDP.c.o  -o cmTryCompileExec1353684090 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of uid_t passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1603190179/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1603190179.dir/build.make CMakeFiles/cmTryCompileExec1603190179.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1603190179.dir/uid_t.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1603190179.dir/uid_t.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/uid_t.c
+Linking C executable cmTryCompileExec1603190179
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1603190179.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1603190179.dir/uid_t.c.o  -o cmTryCompileExec1603190179 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of gid_t passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2534782672/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2534782672.dir/build.make CMakeFiles/cmTryCompileExec2534782672.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2534782672.dir/gid_t.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec2534782672.dir/gid_t.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/gid_t.c
+Linking C executable cmTryCompileExec2534782672
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2534782672.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec2534782672.dir/gid_t.c.o  -o cmTryCompileExec2534782672 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of size_t passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1224719480/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1224719480.dir/build.make CMakeFiles/cmTryCompileExec1224719480.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1224719480.dir/size_t.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1224719480.dir/size_t.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/size_t.c
+Linking C executable cmTryCompileExec1224719480
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1224719480.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1224719480.dir/size_t.c.o  -o cmTryCompileExec1224719480 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of off_t passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2204785356/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2204785356.dir/build.make CMakeFiles/cmTryCompileExec2204785356.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2204785356.dir/off_t.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec2204785356.dir/off_t.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/off_t.c
+Linking C executable cmTryCompileExec2204785356
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2204785356.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec2204785356.dir/off_t.c.o  -o cmTryCompileExec2204785356 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec559786422/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec559786422.dir/build.make CMakeFiles/cmTryCompileExec559786422.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec559786422.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec559786422.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTryCompileExec559786422
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec559786422.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec559786422.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTryCompileExec559786422 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3367637740/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3367637740.dir/build.make CMakeFiles/cmTryCompileExec3367637740.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3367637740.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec3367637740.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3367637740
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3367637740.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec3367637740.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3367637740 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec61271942/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec61271942.dir/build.make CMakeFiles/cmTryCompileExec61271942.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec61271942.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec61271942.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec61271942
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec61271942.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec61271942.dir/CheckFunctionExists.c.o  -o cmTryCompileExec61271942 -rdynamic -lpthread 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test PTHREAD_SETAFFINITY succeded with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1525130872/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1525130872.dir/build.make CMakeFiles/cmTryCompileExec1525130872.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1525130872.dir/src.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DPTHREAD_SETAFFINITY   -o CMakeFiles/cmTryCompileExec1525130872.dir/src.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec1525130872
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1525130872.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DPTHREAD_SETAFFINITY    CMakeFiles/cmTryCompileExec1525130872.dir/src.c.o  -o cmTryCompileExec1525130872 -rdynamic -lpthread 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+Source file was:
+#define _GNU_SOURCE
+#include <pthread.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+int main(void) { cpu_set_t set;
+    CPU_ZERO(&set);
+    CPU_SET(0, &set);
+    pthread_setaffinity_np(pthread_self(), sizeof(set), &set);
+    return 0;
+}
+Determining if files sched.h exist passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1373012347/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1373012347.dir/build.make CMakeFiles/cmTryCompileExec1373012347.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1373012347.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused       -o CMakeFiles/cmTryCompileExec1373012347.dir/CheckIncludeFiles.c.o   -c /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec1373012347
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1373012347.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused        CMakeFiles/cmTryCompileExec1373012347.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec1373012347 -rdynamic 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sysconf exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec806764393/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec806764393.dir/build.make CMakeFiles/cmTryCompileExec806764393.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec806764393.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=sysconf   -o CMakeFiles/cmTryCompileExec806764393.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec806764393
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec806764393.dir/link.txt --verbose=1
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=sysconf    CMakeFiles/cmTryCompileExec806764393.dir/CheckFunctionExists.c.o  -o cmTryCompileExec806764393 -rdynamic -lpthread 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+
+Checking whether the ASM-ATT compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+GNU assembler (GNU Binutils; openSUSE 12.2) 2.22
+Copyright 2011 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or later.
+This program has absolutely no warranty.
+This assembler was configured for a target of `x86_64-suse-linux'.
+Determining if the function fseeko exists passed with the following output:
+Change Dir: /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1328518751/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1328518751.dir/build.make CMakeFiles/cmTryCompileExec1328518751.dir/build
+gmake[1]: Entering directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1328518751.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=fseeko   -o CMakeFiles/cmTryCompileExec1328518751.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1328518751
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1328518751.dir/link.txt --verbose=1
+/usr/bin/gcc    -fexcess-precision=fast -Wall -Wno-unused    -DCHECK_FUNCTION_EXISTS=fseeko    CMakeFiles/cmTryCompileExec1328518751.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1328518751 -rdynamic -lpthread 
+gmake[1]: Leaving directory `/data/pckr144/potestio/hadressmacs/adressmacs/CMakeFiles/CMakeTmp'
+
+

@@ -1,0 +1,12 @@
+libdir=/data/pckr144/potestio/hadressmacs/debug_hadress/lib
+includedir=/data/pckr144/potestio/hadressmacs/debug_hadress/include
+
+Name: libmd
+Description: Gromacs md lib
+URL: http://www.gromacs.org
+Version: 4.6-dev
+Requires: libgmx fftw3f libxml-2.0
+Libs.private: -lm -lpthread
+Libs: -L${libdir} -lmd 
+Cflags: -I${includedir}  -DGMX_SOFTWARE_INVSQRT -DGMX_THREADS
+

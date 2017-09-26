@@ -1,0 +1,1 @@
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused   -fno-inline  -g     CMakeFiles/g_helix.dir/g_helix.c.o  -o CMakeFiles/CMakeRelink.dir/g_helix -rdynamic libgmxana.so.6 ../mdlib/libmd.so.6 -lfftw3f -lxml2 ../gmxlib/libgmx.so.6 -ldl -lm -lpthread -Wl,-rpath,/data/pckr144/potestio/hadressmacs/debug_hadress/lib 

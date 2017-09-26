@@ -1,0 +1,1 @@
+/usr/bin/gcc   -fexcess-precision=fast -Wall -Wno-unused   -fno-inline  -g     CMakeFiles/g_protonate.dir/g_protonate.c.o  -o CMakeFiles/CMakeRelink.dir/g_protonate -rdynamic -ldl -lm libgmxpreprocess.so.6 ../mdlib/libmd.so.6 ../gmxlib/libgmx.so.6 -ldl -lm -lpthread -lfftw3f -lxml2 -Wl,-rpath,/data/pckr144/potestio/hadressmacs/debug_hadress/lib 
