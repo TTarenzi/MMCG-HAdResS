@@ -37,6 +37,9 @@
 #include <config.h>
 #endif
 
+#include <signal.h>
+#include <stdlib.h>
+
 #if ((defined WIN32 || defined _WIN32 || defined WIN64 || defined _WIN64) && !defined __CYGWIN__ && !defined __CYGWIN32__)
 /* _isnan() */
 #include <float.h>
@@ -187,6 +190,23 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
     char        sbuf[STEPSTRSIZE],sbuf2[STEPSTRSIZE];
     int         handled_stop_condition=gmx_stop_cond_none; /* compare to get_stop_condition*/
     gmx_iterate_t iterate;
+
+// MMCG stuff
+    gmx_bool bMMCG = FALSE;
+    // charge groups
+    int *allcgid=NULL;
+    // charge groups number
+    int allcgnr = 0;
+    // solvent
+    int *allsolid=NULL;
+    // solvent groups number
+    int allsolnr = 0;
+    // WALL POT stuff
+      gmx_bool bWallpot = FALSE;
+      // potential data
+      t_user_potential *pot;
+// end MMCG
+
     gmx_large_int_t multisim_nsteps=-1; /* number of steps to do  before first multisim 
                                           simulation stops. If equal to zero, don't
                                           communicate any more between multisims.*/
@@ -203,6 +223,12 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
     bIonize  = (Flags & MD_IONIZE);
     bFFscan  = (Flags & MD_FFSCAN);
     bAppend  = (Flags & MD_APPENDFILES);
+
+// MMCG
+    bMMCG = (Flags & MD_MMCG);
+    bWallpot = (Flags & MD_WALLPOT);
+// end MMCG
+
     if (Flags & MD_RESETCOUNTERSHALFWAY)
     {
         if (ir->nsteps > 0)
@@ -664,6 +690,40 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
     step = ir->init_step;
     step_rel = 0;
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+// MMCG initialization
+    if (bMMCG && (cr->duty & DUTY_PP)) {
+
+        fprintf (stderr,"initialize with init_mmcg\n");
+
+        if (init_mmcg(nfile,fnm,ir,top_global,
+                      &allcgnr,&allcgid,&allsolnr,
+                      &allsolid,cr)==1) {
+            fprintf (stderr,"MMCG initialization failed. MD will run without MMCG\n");
+            bMMCG = FALSE;
+        }
+    }
+    
+    if (bWallpot && (cr->duty & DUTY_PP)) {
+
+        fprintf (stderr,"initialize with init_Wpotential\n");
+
+
+        if (init_Wpotential(&(ir->pot),nfile,fnm,state,state_global,top_global,cr,f)==1) {
+            fprintf(stderr,"Wall potential initialization failed. MD will run without it.\n");
+            bWallpot = FALSE;
+        }
+    }
+    
+// end MMCG initialization
+    
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
     if (ir->nstlist == -1)
     {
         init_nlistheuristics(&nlh,bGStatEveryStep,step);
@@ -1038,6 +1098,18 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
             fflush(fplog);
         }
         
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+        if (bWallpot) {
+            do_Wpotential(&(ir->pot),ir,state,f,cr,step,top_global,mdatoms);
+        }
+        
+        
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         if (bVV && !bStartingFromCpt && !bRerunMD)
         /*  ############### START FIRST UPDATE HALF-STEP FOR VV METHODS############### */
         {
@@ -1541,6 +1613,32 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
                 unshift_self(graph,state->box,state->x);
             }
             
+//////////////////////////////////////////////////////////////////////////////////////////
+// MMCG - velocities reversing (keep waters in droplet)
+	    if(bMMCG && (cr->duty & DUTY_PP) && !(step % ir->mmcg.nstwtlist)) {
+	 	// in order to exclude "PME only" nodes, do_mmcg only every nstwtlist steps	
+		if(PARTDECOMP(cr))
+			do_mmcg(top_global->natoms,
+			   ir,mdatoms,state_global,top_global,cr,
+			   fr->cg_cm, allcgid, allcgnr,
+			   allsolid, allsolnr, log);
+		if(DOMAINDECOMP(cr)) {
+			make_la2lc(cr->dd);
+			// WARNING  : in order to compile
+			// you need to add the prototype 
+			// of this routine (make_la2lc) in include/domdec.h 
+			// and make it non static in src/mdlib/domdec_top.c
+			do_mmcg(top_global->natoms,
+			   ir,mdatoms,state,top_global,cr,
+			   fr->cg_cm, allcgid, allcgnr,
+			   allsolid, allsolnr, log);
+		}
+	    }
+// End MMCG velocities reversing
+ 
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
             GMX_BARRIER(cr->mpi_comm_mygroup);
             GMX_MPE_LOG(ev_update_finish);
 
@@ -1606,7 +1704,7 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
         }
 
         update_box(fplog,step,ir,mdatoms,state,graph,f,
-                   ir->nstlist==-1 ? &nlh.scale_tot : NULL,pcoupl_mu,nrnb,wcycle,upd,bInitStep,FALSE);
+                   ir->nstlist==-1 ? &nlh.scale_tot : NULL,pcoupl_mu,nrnb,wcycle,upd,bInitStep,FALSE,bWallpot);
         
         /* ################# END UPDATE STEP 2 ################# */
         /* #### We now have r(t+dt) and v(t+dt/2)  ############# */
@@ -1850,6 +1948,17 @@ double do_md(FILE *fplog,t_commrec *cr,int nfile,const t_filenm fnm[],
     /* End of main MD loop */
     debug_gmx();
     
+/////////////////////////////////////////////////////////////////////////////////////   
+/////////////////////////////////////////////////////////////////////////////////////   
+
+   if (bWallpot) {
+	finalize_Wpot(&(ir->pot));
+   }
+
+/////////////////////////////////////////////////////////////////////////////////////   
+/////////////////////////////////////////////////////////////////////////////////////   
+
+
     /* Stop the time */
     runtime_end(runtime);
     

@@ -1042,7 +1042,7 @@ void set_deform_reference_box(gmx_update_t upd,gmx_large_int_t step,matrix box)
 
 static void deform(gmx_update_t upd,
                    int start,int homenr,rvec x[],matrix box,matrix *scale_tot,
-                   const t_inputrec *ir,gmx_large_int_t step)
+                   const t_inputrec *ir,gmx_large_int_t step,gmx_bool bWallpot)
 {
     matrix bnew,invbox,mu;
     real   elapsed_time;
@@ -1089,6 +1089,76 @@ static void deform(gmx_update_t upd,
         x[i][YY] = mu[YY][YY]*x[i][YY]+mu[ZZ][YY]*x[i][ZZ];
         x[i][ZZ] = mu[ZZ][ZZ]*x[i][ZZ];
     }
+
+
+// test MMCG/WPOT : for isotropic pressure coupling only ! (distances...)
+/*
+    if (bWallpot) {
+
+      ir->pot->center[i][XX] = mu[XX][XX]*ir->pot->center[i][XX]+mu[YY][XX]*ir->pot->center[i][YY]+mu[ZZ][XX]*ir->pot->center[i][ZZ];
+      ir->pot->center[i][YY] = mu[YY][YY]*ir->pot->center[i][YY]+mu[ZZ][YY]*ir->pot->center[i][ZZ];
+      ir->pot->center[i][ZZ] = mu[ZZ][ZZ]*ir->pot->center[i][ZZ];
+      
+
+      // type 1
+      ir->pot->z_memb_t *= mu[ZZ][ZZ];
+      ir->pot->z_memb_b *= mu[ZZ][ZZ];
+
+      ir->pot->r_t = (zt+ir->pot->r_t)*mu[ZZ][ZZ] - ir->pot->z_memb_t;
+      ir->pot->r_b = ir->pot->z_memb_b - (zb-ir->pot->r_b)*mu[ZZ][ZZ];
+
+      ir->pot->zp_t *= mu[ZZ][ZZ];
+      ir->pot->zp_b *= mu[ZZ][ZZ];
+      ir->pot->rcut *= mu[ZZ][ZZ];
+
+      // type 2
+      if (ir->pot->type == wpt_MB || ir->pot->type == wpt_SPMB ) {
+        real zt = ir->pot->z_memb_t;
+        real zb = ir->pot->z_memb_b;
+
+        ir->pot->r_protein *= mu[ZZ][ZZ];
+        ir->pot->r_panchor *= mu[ZZ][ZZ];
+        ir->pot->Surf_radius *= mu[ZZ][ZZ];
+        ir->pot->Surf_radius_int *= mu[ZZ][ZZ];
+
+        for(i=0;i<ir->pot->np_Surf;i++) {
+          ir->pot->Surf[i][XX] = mu[XX][XX]*ir->pot->Surf[i][XX]+mu[YY][XX]*ir->pot->Surf[i][YY]+mu[ZZ][XX]*ir->pot->Surf[i][ZZ];
+          ir->pot->Surf[i][YY] = mu[YY][YY]*ir->pot->Surf[i][YY]+mu[ZZ][YY]*ir->pot->Surf[i][ZZ];
+          ir->pot->Surf[i][ZZ] = mu[ZZ][ZZ]*ir->pot->Surf[i][ZZ];
+        }
+        for(i=0;i<ir->pot->Surf_natoms;i++) {
+          ir->pot->Surf_atoms[i][XX] = mu[XX][XX]*ir->pot->Surf_atoms[i][XX]+mu[YY][XX]*ir->pot->Surf_atoms[i][YY]+mu[ZZ][XX]*ir->pot->Surf_atoms[i][ZZ];
+          ir->pot->Surf_atoms[i][YY] = mu[YY][YY]*ir->pot->Surf_atoms[i][YY]+mu[ZZ][YY]*ir->pot->Surf_atoms[i][ZZ];
+          ir->pot->Surf_atoms[i][ZZ] = mu[ZZ][ZZ]*ir->pot->Surf_atoms[i][ZZ];
+        }
+
+        // indexes refs
+        ir->pot->sgs->x_min *= mu[XX][XX];
+        ir->pot->sgs->x_max *= mu[XX][XX];
+        ir->pot->sgs->dx *= mu[XX][XX];
+        ir->pot->sgs->y_min *= mu[YY][YY];
+        ir->pot->sgs->y_max *= mu[YY][YY];
+        ir->pot->sgs->dy *= mu[YY][YY];
+        ir->pot->sgs->z_min *= mu[ZZ][ZZ];
+        ir->pot->sgs->z_max *= mu[ZZ][ZZ];
+        ir->pot->sgs->dz *= mu[ZZ][ZZ];
+        if (ir->pot->bAtoms_GS) {
+          ir->pot->sags->x_min *= mu[XX][XX];
+          ir->pot->sags->x_max *= mu[XX][XX];
+          ir->pot->sags->dx *= mu[XX][XX];
+          ir->pot->sags->y_min *= mu[YY][YY];
+          ir->pot->sags->y_max *= mu[YY][YY];
+          ir->pot->sags->dy *= mu[YY][YY];
+          ir->pot->sags->z_min *= mu[ZZ][ZZ];
+          ir->pot->sags->z_max *= mu[ZZ][ZZ];
+          ir->pot->sags->dz *= mu[ZZ][ZZ];
+        }
+      }
+    }
+
+//end test MMCG/WPOT
+*/
+
     if (*scale_tot)
     {
         /* The transposes of the scaling matrices are stored,
@@ -1461,7 +1531,8 @@ void update_box(FILE         *fplog,
                 gmx_wallcycle_t wcycle,
                 gmx_update_t upd,
                 gmx_bool         bInitStep,
-                gmx_bool         bFirstHalf)
+                gmx_bool         bFirstHalf,
+                gmx_bool	     bWallpot)
 {
     gmx_bool             bExtended,bTrotter,bLastStep,bLog=FALSE,bEner=FALSE;
     double           dt;
@@ -1549,7 +1620,7 @@ o               If we assume isotropic scaling, and box length scaling
 
     if (DEFORM(*inputrec)) 
     {
-        deform(upd,start,homenr,state->x,state->box,scale_tot,inputrec,step);
+        deform(upd,start,homenr,state->x,state->box,scale_tot,inputrec,step,bWallpot);
     }
     where();
     dump_it_all(fplog,"After update",

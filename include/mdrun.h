@@ -61,6 +61,7 @@ extern "C" {
 #define MD_RERUN_VSITE    (1<<5)
 #define MD_FFSCAN         (1<<6)
 #define MD_SEPPOT         (1<<7)
+#define MD_MMCG	          (1<<8)
 #define MD_PARTDEC        (1<<9)
 #define MD_DDBONDCHECK    (1<<10)
 #define MD_DDBONDCOMM     (1<<11)
@@ -72,6 +73,7 @@ extern "C" {
 #define MD_READ_EKIN      (1<<17)
 #define MD_STARTFROMCPT   (1<<18)
 #define MD_RESETCOUNTERSHALFWAY (1<<19)
+#define MD_WALLPOT	  (1<<20)
 
 /* Define a number of flags to better control the information
  * passed to compute_globals in md.c and global_stat.
@@ -176,6 +178,44 @@ gmx_integrator_t do_md;
 
 gmx_integrator_t do_md_openmm;
 
+extern 
+void do_mmcg (int natoms,	    /* number of atoms in simulation       */
+ 	    t_inputrec   *inputrec, /* input record and box stuff          */
+	    t_mdatoms    *md,
+	    t_state      *state,
+	    gmx_mtop_t   *top,
+	    t_commrec    *cr,   
+	    rvec         *cg_cm,
+	    int *allcgid, int allcgnr, int *allsolid, int allsolnr,
+	    FILE *log);
+
+extern 
+int init_mmcg(	int nfile,const t_filenm fnm[],
+		t_inputrec* ir, gmx_mtop_t *top_global,
+		int *allcgnr, int *allcgid[],
+		int *allsolnr, int *allsolid[],t_commrec *cr
+		);
+
+
+extern
+int init_Wpotential(t_user_potential *pot,
+	 	     int nfile, const t_filenm fnm[],
+		     t_state *state, t_state *state_global,
+		     gmx_mtop_t *top,
+		     t_commrec *cr,rvec *f);
+
+extern
+int do_Wpotential(t_user_potential *pot,
+		  t_inputrec *inputrec,
+		  t_state *state,
+		  rvec *f,
+		  t_commrec *cr,
+		  gmx_large_int_t step,
+		  gmx_mtop_t *top,
+		  t_mdatoms *md);
+
+extern
+void finalize_Wpot(t_user_potential *pot);
 
 
 /* ROUTINES from minimize.c */

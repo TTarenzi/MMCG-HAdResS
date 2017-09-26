@@ -876,7 +876,7 @@ static void add_vsite(gmx_ga2la_t ga2la,int *index,int *rtil,
     }
 }
 
-static void make_la2lc(gmx_domdec_t *dd)
+void make_la2lc(gmx_domdec_t *dd)
 {
     int *cgindex,*la2lc,cg,a;
     

@@ -383,7 +383,9 @@ int main(int argc,char *argv[])
     { efLOG, "-rt",     "rottorque",ffOPTWR },
     { efMTX, "-mtx",    "nm",       ffOPTWR },
     { efNDX, "-dn",     "dipole",   ffOPTWR },
-    { efRND, "-multidir",NULL,      ffOPTRDMULT}
+    { efRND, "-multidir",NULL,      ffOPTRDMULT},
+    { efGMX, "-mmcg",   "mmcg",     ffOPTRD },
+    { efWPO, "-wpot",   "wpot",     ffOPTRD }
   };
 #define NFILE asize(fnm)
 
@@ -630,6 +632,7 @@ int main(int argc,char *argv[])
   }
 
   Flags = opt2bSet("-rerun",NFILE,fnm) ? MD_RERUN : 0;
+  Flags = Flags | (opt2bSet("-mmcg",NFILE,fnm) ? MD_MMCG : 0);
   Flags = Flags | (bSepPot       ? MD_SEPPOT       : 0);
   Flags = Flags | (bIonize       ? MD_IONIZE       : 0);
   Flags = Flags | (bPartDec      ? MD_PARTDEC      : 0);
@@ -642,7 +645,7 @@ int main(int argc,char *argv[])
   Flags = Flags | (bKeepAndNumCPT ? MD_KEEPANDNUMCPT : 0); 
   Flags = Flags | (sim_part>1    ? MD_STARTFROMCPT : 0); 
   Flags = Flags | (bResetCountersHalfWay ? MD_RESETCOUNTERSHALFWAY : 0);
-
+  Flags = Flags | (opt2bSet("-wpot",NFILE,fnm) ? MD_WALLPOT : 0);
 
   /* We postpone opening the log file if we are appending, so we can 
      first truncate the old log file and append to the correct position 

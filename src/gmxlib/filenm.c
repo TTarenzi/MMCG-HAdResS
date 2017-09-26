@@ -198,6 +198,8 @@ static const t_deffile
     { eftASC, ".hat", "gk", NULL, "Fourier transform of spread function" },
     { eftASC, ".cub", "pot",  NULL, "Gaussian cube file" },
     { eftASC, ".xpm", "root", NULL, "X PixMap compatible matrix file" },
+    { eftASC, ".dat", "mmcg", "-mmcg", "All-atom residues input file" },
+    { eftASC, ".dat", "wpot", "-wpot", "User defined wall potentiel parameter file" },
     { eftASC, "", "rundir", NULL, "Run directory" } 
 };
 

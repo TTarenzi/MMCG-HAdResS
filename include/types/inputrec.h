@@ -146,6 +146,148 @@ typedef struct {
 } t_pull;
 
 
+typedef struct {
+ int nstwtlist;		/* number of steps before pairlist is generated	*/
+ real shell1wt;		/* cutoff for pair list generation		*/
+ real shell2wt;		/* cutoff for inversion of velocities		*/
+} t_mmcg;
+
+  enum {wpt_SP,wpt_MB,wpt_SPMB,wpt_SPH,wpt_SPMBH,wpt_NR}; // types for user defined wall potential:
+				      //      wpt_SP = planes + hemispheres only (the protein does not interact with the membrane)
+                                      //      wpt_MB = membrane envelopping/coating the protein only 
+                                      //      wpt_SPMB = planes + hemispheres + membrane envelopping/coating the protein
+                                      //      wpt_SPH = planes + lower hemispheres     
+                                      //      wpt_SPMBH = planes + lower hemispheres + membrane envelopping/coating the protein                                                                                                                   //      wpt_NR = ??
+
+typedef struct { // struct to save some time when computing the force
+ // Parameters for the vdw potential due to the coating wall mimicking the membrane interaction 
+ int n;
+ real sigma;
+ real epsilon;
+ real rmax;
+ real VDW_reduc;		// coefficient to lower the intensity ?
+  // for the shifting
+ real Vm;
+ real Fm;
+ real pm;
+ real A,B,C,D;
+  //
+  // Parameters for the vdw potential due to the hemisphere walls
+ int n_hs;
+ real sigma_hs;
+ real epsilon_hs;
+ real rmax_hs;
+ real VDW_reduc_hs;		// coefficient to lower the intensity ? 
+ real min_hs;                   // Position of the minimum in the vdw potential due to the hemisphere walls 
+  // for the shifting
+ real Vm_hs;
+ real Fm_hs;
+ real pm_hs;
+ real A_hs,B_hs,C_hs,D_hs;
+
+} t_user_force_vdw;
+
+typedef struct {
+
+  int *zi;			// z index
+  int nz;           		// nr of cells in z direction
+  int **yi;			// idem
+  int ny;
+  int ***xi;
+  int nx;
+  real x_min,y_min,z_min; 	// min of atomic coordinate in each direction (to determine in which cell to look for)
+  real x_max,y_max,z_max;       // max of atomic coordinate in each direction (to determine in which cell to look for)
+  real dx,dy,dz; 		// grid cell size
+
+  gmx_bool *prop1;		// Flags for some properties: 
+                                //      in "sags" it tells if the atom is CA (0) or an anchor (1);
+                                //      in "sgs" it tells if the surface point is close to a CA atom (0) or an anchor atom (1); 
+} wpot_gs;
+
+typedef struct {
+
+  // see enum above: 
+  //                type 1 = Protein + ligands + hemispheres and planes + membrane NOT interacting with protein (No embedding surface the protein)
+  //                type 2 = Protein + ligands + membrane interacting with protein (Embedding surface the protein)
+  //                trpe 3 = Protein + ligands + hemispheres and planes + membrane interacting with protein (Embedding surface the protein) 
+  int type;		
+
+  // geometry
+  char orientation; 	// X Y or Z
+  int dim0,dim1,dim2;
+
+  real* center;
+
+  int lips_nr, sols_nr, anchor_nr;
+  char** sols;		// names of solvent resids to exclude
+  char** lips;		// names of membrane resids
+  char** anchor;	// names of anchor resids
+
+  // data for types 1 & 3
+  real r_t; 		// top sphere radius
+  real r_b;		// bottom sphere radius
+  real rplus;		// added length at max
+  real zp_t;		// altitudes of the planes
+  real zp_b;		// (the geometric center of the protein may not 
+			// be on the center plane of the membrane...)
+  real zplus;		// added distance from membrane
+  real rcut; 		// cutoff distance to compute the forces
+ 
+  // data for types 2 & 3
+  real r_protein;		// distance between non-aromatic residues and the wall around the protein
+  real r_panchor;		// distance between aromatic residues (anchor points) and the wall around the protein
+  real smoothen;
+  real z_memb_b;		// altitudes of the outer atoms of the membrane
+  real z_memb_t;		// (because the membrane may not be centered...)
+  rvec *Surf;			// coordinates of inner surface points
+  int np_Surf;          	// number of surface points
+
+  int *index;			// index of the atoms on which to apply the force of the embedding surface    
+  int *index2;			// index of the atoms from which to compute the embedding surface
+  int nindex;                   // number of the atoms on which to apply the force of the embedding surface 
+  int nindex2;                  // number of the atoms from which to compute the embedding surface
+
+
+  int Surf_natoms;		// Number of atoms to be used for building the embedding surface (selected atoms)
+  rvec *Surf_atoms;		// Coordinates of the selected atoms
+  gmx_bool bAtoms_GS;		// Flag for "grid search": 0=no grid search 
+  wpot_gs *sags;                // Selected atoms structure
+
+
+  // not implemented yet, certainly too long to be efficient
+  int nsteps_Surf;		// steps between two computations of the surface 
+ 
+  gmx_bool bFint;		// Flag for interpolating the forces
+  rvec *Fint;
+  int Fint_N;			// resolution for the interpolation of the forces
+  real Fint_dx,Fint_dy,Fint_dz; 
+  real Fint_startx,Fint_starty,Fint_startz;
+
+  gmx_bool bWpot_ener;		// potential summation
+  real Wpotener,Wpot_ener_tot;  // single and all nodes
+
+  gmx_bool bVDW;		// van der waals like force for membrane wall
+  t_user_force_vdw *vdw; 
+  gmx_bool bCheck;		// check the surface with a coordinates file
+
+  // These values save time during distance evaluation
+  real Surf_radius;		// Max "radius" of the embedding surface, 
+  real Surf_radius_int;		// Min "radius" of the embedding surface inner radius
+
+  wpot_gs *sgs;         // Embedding surface points structure
+
+  real c1; 		// constant to adapt force intensity
+  real c_anchor;	// coef to increase force for anchor resids
+
+  real *dist;		// the distances to the surface
+
+  // check distance function with a .vtk file
+  gmx_bool bVtk_check;
+  int nsteps_vtk;
+
+} t_user_potential;
+
+
 /* Abstract types for enforced rotation only defined in pull_rotation.c       */
 typedef struct gmx_enfrot *gmx_enfrot_t;
 typedef struct gmx_enfrotgrp *gmx_enfrotgrp_t;
@@ -350,6 +492,8 @@ typedef struct {
                         /* parameter needed for AdResS simulation       */
   gmx_bool bAdress;     /* Is AdResS enabled ? */
   t_adress *adress;     /* The data for adress simulations */
+  t_mmcg mmcg;		/* vals for MMCG				*/
+  t_user_potential pot; /* wall potential data				*/
 } t_inputrec;
 
 #define DEFORM(ir) ((ir).deform[XX][XX]!=0 || (ir).deform[YY][YY]!=0 || (ir).deform[ZZ][ZZ]!=0 || (ir).deform[YY][XX]!=0 || (ir).deform[ZZ][XX]!=0 || (ir).deform[ZZ][YY]!=0)

@@ -57,6 +57,8 @@ enum {
   efHAT,
   efCUB,
   efXPM,
+  efGMX,
+  efWPO,
   efRND,
   efNR
 };

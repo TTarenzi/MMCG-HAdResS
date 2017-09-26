@@ -245,6 +245,9 @@ void write_dd_pdb(const char *fn,gmx_large_int_t step,const char *title,
                          gmx_mtop_t *mtop,
                          t_commrec *cr,
                          int natoms,rvec x[],matrix box);
+
+void make_la2lc(gmx_domdec_t *dd);
+
 /* Dump a pdb file with the current DD home + communicated atoms.
  * When natoms=-1, dump all known atoms.
  */

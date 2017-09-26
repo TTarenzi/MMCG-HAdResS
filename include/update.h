@@ -147,7 +147,8 @@ void update_box(FILE         *fplog,
 		       gmx_wallcycle_t wcycle,
 		       gmx_update_t upd,
 		       gmx_bool         bInitStep,
-		       gmx_bool         bFirstHalf);
+		       gmx_bool         bFirstHalf,
+                       gmx_bool		bWallpot);
 /* Return TRUE if OK, FALSE in case of Shake Error */
 
 void calc_ke_part(t_state *state,t_grpopts *opts,t_mdatoms *md,
