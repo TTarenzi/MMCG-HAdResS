@@ -366,6 +366,7 @@ typedef struct {
   int  adress_icor;
   int  adress_site;
   rvec adress_refs;
+  rvec adress_refs_2;
   int n_adress_tf_grps;
   int * adress_tf_table_index;
   int *adress_group_explicit;

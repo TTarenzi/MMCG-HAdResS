@@ -338,8 +338,13 @@ real user_force (t_user_potential * pot, real r) {
 #define M_PI 3.14159265358979323846
 #endif
 
+  real maxconst = 0.1;
+  real trasl = maxconst - 0.01;
+
+
   if (r<=0) return 0.;
-  if (r < 0.01) { 
+  //  if (r < 0.01) { 
+  if (r < maxconst) { 
     real ordo = 0.01*cos(0.01/pot->rcut*M_PI/2.);
     if (pot->bWpot_ener)
      //  pot->Wpotener += pot->c1*(ordo-r)*pow(cos(r/pot->rcut*M_PI/2.),2);
@@ -357,7 +362,8 @@ real user_force (t_user_potential * pot, real r) {
   // EMY_CHANGE: Simplified
   //  return pot->c1*1.e-4/r*(pow(cos(r*M_PI/(2.*pot->rcut)),2)/r + 2.*M_PI/(2.*pot->rcut)*sin(r*M_PI/(2.*pot->rcut))*cos(r/pot->rcut*M_PI/2.));
   // EMY_CHANGE: More efficient
-  return pot->c1*1.e-4/r*(cos(r*M_PI/(2.*pot->rcut))*cos(r*M_PI/(2.*pot->rcut))/r + M_PI/pot->rcut*sin(r*M_PI/(2.*pot->rcut))*cos(r/pot->rcut*M_PI/2.));
+  //  return pot->c1*1.e-4/r*(cos(r*M_PI/(2.*pot->rcut))*cos(r*M_PI/(2.*pot->rcut))/r + M_PI/pot->rcut*sin(r*M_PI/(2.*pot->rcut))*cos(r/pot->rcut*M_PI/2.));
+  return pot->c1*1.e-4/(r-trasl)*(cos((r-trasl)*M_PI/(2.*pot->rcut))*cos((r-trasl)*M_PI/(2.*pot->rcut))/(r-trasl) + M_PI/pot->rcut*sin((r-trasl)*M_PI/(2.*pot->rcut))*cos((r-trasl)/pot->rcut*M_PI/2.));
 }
 
 // ___________________________________________________________________________________________________________________
@@ -1067,17 +1073,18 @@ real compute_force_hsphere ( t_user_potential *pot,
   
   if ( x2 < zp - pot->rcut ) {
     clear_rvec(*f);
-    return -0.5; // UNDER the plane (we're always out of the sphere)
+    return -0.5; // UNDER the plane (we're always out of the sphere)                                                                                                                                         
   }
-  
+
   if ( x2 > zp + r ) {
     clear_rvec(*f);
-    return -1.; // ABOVE the hemisphere
+    return -1.; // ABOVE the hemisphere                                                                                                                                                                      
   }
-  
+
+
   // Computing the polar radius
   real radius = sqrt( x0*x0 + x1*x1 ); // Radius projected on the xy plane (distance from Z axis)
-  
+
   // Above the plane, outside of cilinder containing the hemisphere the hemisphere	
   if ( x2 > zp && radius >= r )  {
     clear_rvec(*f);
@@ -1144,7 +1151,7 @@ real compute_force_hsphere ( t_user_potential *pot,
 
 // used for the upper plane, when there is not the upper hemisphere
 
-real compute_force_hsphere_H_upper ( t_user_potential *pot,
+real compute_force_hsphere_H ( t_user_potential *pot,
                              rvec *x,
                              rvec *f,
                              real zp, // plane altitude (zp_t/b) with respect the geometric center (pot->center)
@@ -1174,35 +1181,59 @@ real compute_force_hsphere_H_upper ( t_user_potential *pot,
   //   |                   x_c
 
   // the points which require no calculations:
-  // under the plane (out of cutoff)
+  // 1. under the plane (out of cutoff)
   // and above the hemisphere
 
-  if ( x2 < zp - pot->rcut ) {
+  if ( x2 <= 0. ) {
     clear_rvec(*f);
-    return -0.5; // UNDER the plane (we're always out of the sphere)
+    return -0.5; // UNDER the plane, under the GC                                                                                                                                                            
   }
 
-/*  if ( x2 > zp + r ) {
-    clear_rvec(*f);
-    return -1.; // ABOVE the hemisphere
-  }
-  */
 
   // Computing the polar radius
   real radius = sqrt( x0*x0 + x1*x1 ); // Radius projected on the xy plane (distance from Z axis)
 
-  // Above the plane, outside of cilinder containing the hemisphere the hemisphere
-  if ( x2 > zp && radius >= r )  {
+  // 1. Under the plane, constant force toward the outside of the membrane                                                                                                                                   
+  if ( x2 > 0. && x2 < zp && radius >= r ) {
+    (*f)[pot->dim0] = 0.;
+    (*f)[pot->dim1] = 0.;
+    (*f)[pot->dim2] = user_force(pot,0.01);
+    return zp-x2; // UNDER the plane, out of the radius                                                                                                                                                      
+  }
+
+  if ( x2 > 0. && x2 < zp && radius < r ) {
+    clear_rvec(*f);
+    return -0.5; // Under the plane, within the radius                                                                                                                                                      
+  }
+
+  // 2. Above the plane, outside of cilinder containing the hemisphere the hemisphere
+  if ( x2 > zp + pot->rcut && radius >= r )  {
     clear_rvec(*f);
     return -1.; // Outside the hemisphere
   }
 
-  // Just under the plane
-  if ( x2 >= zp - pot->rcut && radius >= r ) {
+  /*
+  // 3. Just under the plane
+  if ( x2 >= zp - pot->rcut && x2 < zp && radius >= r ) {
     (*f)[pot->dim0] = 0.;
     (*f)[pot->dim1] = 0.;
     (*f)[pot->dim2] = -user_force(pot,zp-x2);
     return zp - x2; // Distance from the membrane plane
+  }
+  */
+
+
+
+// 4. Just above the plane (in the cutoff)
+  if ( x2 > zp && radius >= r ) {
+    (*f)[pot->dim0] = 0.;
+    (*f)[pot->dim1] = 0.;
+    (*f)[pot->dim2] = user_force(pot,x2-zp);
+    return x2 - zp ; // Distance from the membrane plane
+  }
+
+  else {
+    clear_rvec(*f);
   }
 
   /*
@@ -1260,7 +1291,7 @@ real compute_force_hsphere_H_upper ( t_user_potential *pot,
 
 // used for the lower plane and hemisphere, when H-AdResS is used
 
-
+/*
 real compute_force_hsphere_H_lower ( t_user_potential *pot,
                              rvec *x,
                              rvec *f,
@@ -1291,63 +1322,109 @@ real compute_force_hsphere_H_lower ( t_user_potential *pot,
   //   |                   x_c
 
   // the points which require no calculations:
-  // under the plane (out of cutoff)
+  // 1. under the plane (out of cutoff)
   // and above the hemisphere
 
-  if ( x2 < zp - pot->rcut ) {
+  if ( x2 < 0. ) {
     clear_rvec(*f);
     return -0.5; // UNDER the plane (we're always out of the sphere)
   }
 
-/*  if ( x2 > zp + r ) {
-    clear_rvec(*f);
-    return -1.; // ABOVE the hemisphere
-  }
-  */
+// 2.
 
+  if ( x2 > zp + r + pot->rcut ) {
+    clear_rvec(*f);
+    return -1.; // ABOVE the hemisphere (cutoff included)
+  }
+  
+  
   // Computing the polar radius
   real radius = sqrt( x0*x0 + x1*x1 ); // Radius projected on the xy plane (distance from Z axis)
-
-  // Above the plane, outside of cilinder containing the hemisphere the hemisphere
-  if ( x2 > zp && radius >= r )  {
+  
+  // 3. Above the plane, outside of cilinder containing the hemisphere and outside the cutoff
+  if ( x2 > zp + pot->rcut && radius >= r + pot->rcut )  {
     clear_rvec(*f);
     return -1.; // Outside the hemisphere
   }
-
-  // Just under the plane
-  if ( x2 >= zp - pot->rcut && radius >= r ) {
+  
+  // 4. Below the plane, outside of cilinder containing the hemisphere
+  if ( x2 < zp && radius >= r )  {
     (*f)[pot->dim0] = 0.;
     (*f)[pot->dim1] = 0.;
-    (*f)[pot->dim2] = -user_force(pot,zp-x2);
+    (*f)[pot->dim2] = 10.0*user_force(pot,0.001);
     return zp - x2; // Distance from the membrane plane
   }
+  
+  
+  // 5. Below the plane, inside the cilinder containing the hemisphere and inside the cutoff
+/*      if ( x2 < zp && radius < r )  {
+    clear_rvec(*f);
+    return -0.5; // Outside the hemisphere
+                }
+*/
+/*
+  // 5. Just above the plane (inside the cutoff)
+  if ( x2 <= zp + pot->rcut && radius >= r + pot->rcut) {
+    (*f)[pot->dim0] = 0.;
+    (*f)[pot->dim1] = 0.;
+    (*f)[pot->dim2] = 10.0*user_force(pot,x2-zp);
+    return x2 - zp; // Distance from the membrane plane
+  }
 
+  real rho = sqrt( x0*x0 + x1*x1 + (x2-zp)*(x2-zp) ); // rho = real 3d-radius centered on the plane (and not on the origin of the geometric center)
+  
+  //////////////////////////////////////////////////////////////////////////
+  // 6. 
+  if (x2 < zp + pot->rcut && radius >= r ) {
+    real dist = rho - r;
+    real intens = 15.0*user_force(pot,dist);
+    (*f)[pot->dim0] = intens*(x0/rho);
+    (*f)[pot->dim1] = intens*(x1/rho);
+    (*f)[pot->dim2] = user_force(pot,x2-zp) + intens*((x2-zp)/rho);
+    if (x2-zp < dist) {
+      return x2-zp;
+    } else {
+      return dist;
+    }
+  }
+  
+   
+ 
+  
+  
+  
+  //////////////////////////////////////////////////////////////////////////
 
-  // Inside the cilinder containing the hemisphere
+  // 7. Inside the cilinder containing the hemisphere
   if ( x2 > zp ) { // no longer need to test the radius
-    real rho = sqrt( x0*x0 + x1*x1 + (x2-zp)*(x2-zp) ); // rho = real 3d-radius centered on the plane (and not on the origin of the geometric center)
+    // real rho = sqrt( x0*x0 + x1*x1 + (x2-zp)*(x2-zp) ); // rho = real 3d-radius centered on the plane (and not on the origin of the geometric center)
     if ( rho > r+pot->rcut) { // Outside the hemisphere, outside the cutoff
       clear_rvec(*f);
       return -1.;
     }
 
+// 8.
 
-    else if ( rho > r && rho < r+pot->rcut) { // Outside the hemisphere, within the cutoff
-        real dist = r - rho;
-        real intens = user_force(pot,dist);
+    // else if ( rho >= r && rho <= r+pot->rcut) { // Outside the hemisphere, within the cutoff
+    else if ( rho >= r && rho <= r+pot->rcut) {
+        real dist = rho - r;
+        real intens = 15.*user_force(pot,dist);
         (*f)[pot->dim0] = intens*(x0/rho);
         (*f)[pot->dim1] = intens*(x1/rho);
         (*f)[pot->dim2] = intens*((x2-zp)/rho);
         return dist;
     }
 
-
+// 9.
 
     else if ( rho < r-pot->rcut ) { // Inside the hemishere and over the cutoff (too much inside)
       clear_rvec(*f);
       return -0.5;
     }
-    else { // inside the hemisphere, within the cutoff
+
+
+
+    else { // 10. inside the hemisphere, within the cutoff
       real dist = r - rho;
       real intens = user_force(pot,dist);
       (*f)[pot->dim0] = -intens*(x0/rho);
@@ -1361,6 +1438,8 @@ real compute_force_hsphere_H_lower ( t_user_potential *pot,
   // EMY_CHANGE: Logic simplified: removed useless "if" check. At this level radius < r is always true.
   //  if ( radius < r ) { // SANDAL: x2 < zp is implicit (we already checked all cases where x2 >= zp)
   // if ( radius < r - pot->rcut) {
+  
+  // 11.
   if ( radius < r - pot->rcut) { // SANDAL: x2 < zp is implicit (we already checked all cases where x2 >= zp)
     clear_rvec(*f);
     return -0.5;
@@ -1368,10 +1447,11 @@ real compute_force_hsphere_H_lower ( t_user_potential *pot,
   //    else {
   real dist = sqrt(pow(r-radius,2) + pow(x2-zp,2)); // EMY: real radius centered in the kink; in 3D this is the radius of the tube that forms the torus, and the center of the tube corresponds to the kink in the 2D representation of the picture at pag. 2 of doc_MMCG_Wpot.pdf document
   // Dist is the distance between the point x and the nearest point of intersection between the hemisphere and the membrane plane.
+// 12.
   if (dist > pot->rcut) {
     clear_rvec(*f);
     return -0.5;
-  }
+  } // 13.
   else {
     real intens = user_force(pot,dist);
     (*f)[pot->dim0] = -intens*x0*(r-radius)/(radius*dist);
@@ -1387,7 +1467,7 @@ real compute_force_hsphere_H_lower ( t_user_potential *pot,
   return -1.;
 }
 
-
+*/
 
 
 
@@ -1433,15 +1513,21 @@ real compute_force_membrane ( t_user_potential *pot,
   // Zone to exclude: too far from the membrane
   // EMY_CHANGE: Replaced pot->vdw->rmax with pot->rcut since the interaction is 1/r-like
   // EMY_CHECK: Should be this interaction replaced by the repulsive part of the vdw in order to have a coherent repulsion along the membrane?
+  //1.
   if ((*xr)[pot->dim2]>z_t+pot->rcut || (*xr)[pot->dim2]<z_b-pot->r_protein-0.5) {sfree(xr); (*f)[pot->dim0]=0.;(*f)[pot->dim1]=0.;(*f)[pot->dim2]=0.; return -0.5;}
-  // Zone to exclude: inside the membrane, out of the radius
+  // 2. Zone to exclude: inside the membrane, out of the radius
   real radius = sqrt((*xr)[pot->dim0]*(*xr)[pot->dim0]+(*xr)[pot->dim1]*(*xr)[pot->dim1]);
   if ((*xr)[pot->dim2]>z_b && (*xr)[pot->dim2]<z_t && radius>pot->Surf_radius) {sfree(xr); (*f)[pot->dim0]=0.;(*f)[pot->dim1]=0.;(*f)[pot->dim2]=0.; return -1.;}
   // Above the membrane out of the radius
   real dist;
   // EMY_CHANGE: Replaced pot->vdw->rmax with pot->rcut since the interaction is 1/r-like
   // EMY_CHECK: The condition (*xr)[pot->dim2]<z_t+pot->rcut is useless because it will be always verified if the code reaches this point.
-  if ((*xr)[pot->dim2]>z_t && (*xr)[pot->dim2]<z_t+pot->rcut && radius>pot->Surf_radius) {
+  // 3.
+
+
+  //  if ((*xr)[pot->dim2]>z_t && (*xr)[pot->dim2]<z_t+pot->rcut && radius>pot->Surf_radius) {
+  if ((*xr)[pot->dim2]>z_t && (*xr)[pot->dim2]<z_t+pot->r_protein+0.5 && radius>pot->Surf_radius) {
+
     dist = (*xr)[pot->dim2]-z_t;
     (*f)[pot->dim0] = 0.;
     (*f)[pot->dim1] = 0.;
@@ -1451,7 +1537,11 @@ real compute_force_membrane ( t_user_potential *pot,
   }
   // Under the membrane out of the radius
   // EMY_CHECK: The condition (*xr)[pot->dim2]>z_b-pot->r_protein-0.5 is useless because it will be always verified if the code this point.
-  if ((*xr)[pot->dim2]<z_b && (*xr)[pot->dim2]>z_b-pot->r_protein-0.5 && radius>pot->Surf_radius) {
+
+
+  //  if ((*xr)[pot->dim2]<z_b && (*xr)[pot->dim2]>z_b-pot->r_protein-0.5 && radius>pot->Surf_radius) {
+  if ((*xr)[pot->dim2]<z_b && (*xr)[pot->dim2]>z_b-pot->rcut && radius>pot->Surf_radius) {
+
     dist = -(*xr)[pot->dim2]+z_b;
     (*f)[pot->dim0] = 0.;
     (*f)[pot->dim1] = 0.;
@@ -1473,7 +1563,14 @@ real compute_force_membrane ( t_user_potential *pot,
   // EMY_CHANGES: Replaced pot->vdw->rmax with pot->rcut since the interaction is 1/r-like
   //              Removed useless condition
   //  if ((*xr)[pot->dim2]>=z_t && (*xr)[pot->dim2]<z_t+pot->rcut) {  //0.1*(z_t-z_b) && radius<=pot->Surf_radius) {
-  if ((*xr)[pot->dim2]>=z_t) {
+
+
+
+  //  if ((*xr)[pot->dim2]>=z_t) {
+  if ((*xr)[pot->dim2]>=z_t && (*xr)[pot->dim2]<z_t+pot->r_protein+0.5) {
+    
+    
+    
     real distmin=1337.e42; int indmin=0;
     
     find_gs_cell(xr,pot,pot->sgs,&xbegin,&xend,&ybegin,&yend,&zbegin,&zend);
@@ -1785,7 +1882,7 @@ real compute_single_force ( t_user_potential *pot,
       sfree(force1);
       return dist0;
     } //(SANDAL) Here it is where it decides what is shorter instead of summing the vector (type 3)
-    /*    if (dist0 < dist1 ) { 
+        if (dist0 < dist1 ) { 
       copy_rvec(*force0,*f); 
       sfree(force0);
       sfree(force1);
@@ -1796,8 +1893,8 @@ real compute_single_force ( t_user_potential *pot,
       sfree(force0);
       sfree(force1);
       return dist1; 
-      } */
-
+      } 
+	/*
     else {
       (*f)[pot->dim0] = (*force0)[pot->dim0] + (*force1)[pot->dim0];
       (*f)[pot->dim1] = (*force0)[pot->dim1] + (*force1)[pot->dim1];
@@ -1806,7 +1903,7 @@ real compute_single_force ( t_user_potential *pot,
       sfree(force1);
       return; 
 
-  }
+      } */
   }
   
 
@@ -1819,14 +1916,34 @@ real compute_single_force ( t_user_potential *pot,
     snew(mx,1);
     copy_rvec(*x,*mx);
     (*mx)[pot->dim2] -= 2*((*x)[pot->dim2]-pot->center[pot->dim2]);
-    dist0 = compute_force_hsphere_H_upper(pot,x,force0,pot->zp_t,pot->r_b);
-    // EMY_CHECK: As it is, the z coordinate of mx is respect the gc. However, compute_force_hsphere expects mx to be defined with respect to the box origin and then rescale the coordinates accordingly. Therefore, the following compute_force_hsphere will process the wrong value of z coordinate.
-    // EMY_CHECK: Probably we should remove the definition of mx and replace mx with x in the next line
-    dist1 = compute_force_hsphere_H_lower(pot,mx,force1,-pot->zp_b,pot->r_b);
 
+
+
+    /////////////////////////////////
+    /*    
+    if ((*x)[pot->dim2] >= pot->center[pot->dim2]) {
+      dist0 = compute_force_hsphere_H_upper(pot,x,force0,pot->zp_t,pot->r_b);
+      // EMY_CHECK: As it is, the z coordinate of mx is respect the gc. However, compute_force_hsphere expects mx to be defined with respect to the box origin and then rescale the coordinates accordingly. Therefore, the following compute_force_hsphere will process the wrong value of z coordinate.
+      // EMY_CHECK: Probably we should remove the definition of mx and replace mx with x in the next line
+      dist1 = compute_force_hsphere_H_lower(pot,mx,force1,-pot->zp_b,pot->r_b);
+    }
+    
+    
+    else {
+      dist1 = compute_force_hsphere_H_upper(pot,mx,force0,pot->zp_t,pot->r_b);
+      dist0 = compute_force_hsphere_H_lower(pot,x,force1,-pot->zp_b,pot->r_b);
+    }
+    */
+
+    dist0 = compute_force_hsphere_H(pot,x,force0,pot->zp_t,pot->r_b);
+    dist1 = compute_force_hsphere_H(pot,mx,force1,-pot->zp_b,pot->r_b);
+
+    ////////////////////////////////
+    
     sfree(mx);
-
-    if (dist0 == -1.  || dist1 == -1.  ) {
+    
+    
+    if (dist0 == -1. && dist1 == -1.  ) {
       clear_rvec(*f);
       sfree(force0);
       sfree(force1);
@@ -1839,19 +1956,60 @@ real compute_single_force ( t_user_potential *pot,
       //      return dist0;
       return -0.5; // EMY_CHANGE: same as original above but more readable
     }
-    if (dist0 == -0.5) { // EMY_CHECK: What is this block useful for? Why should I consider the symmetric point in place of x??
+    if (dist0 == -0.5 && dist1 != -1. ) { // EMY_CHECK: What is this block useful for? Why should I consider the symmetric point in place of x??
       copy_rvec(*force1,*f);
-      (*f)[pot->dim2] *= -1.; // SANDAL: the z-coordinate of the force must be inverted since the force has been calculated by compute_force_hsphere function for the case of an atom in the z-positive hemisphere/plane
+      (*f)[pot->dim2] *= -1.;
+ // SANDAL: the z-coordinate of the force must be inverted since the force has been calculated by compute_force_hsphere function for the case of an atom in the z-positive hemisphere/plane
       sfree(force0);
       sfree(force1);
       return dist1;
     }
-    if (dist1 == -0.5 ) {
+    if (dist1 == -0.5 && dist0 != -1. ) {
       copy_rvec(*force0,*f);
       sfree(force0);
       sfree(force1);
       return dist0;
     }
+
+
+    /////////////////////////////////////////////
+
+    if (dist0 == -1. && dist1 == -0.5  ) {
+      clear_rvec(*f);
+      sfree(force0);
+      sfree(force1);
+      return   -1.;
+    }
+
+
+    if (dist1 == -1. && dist0 == -0.5  ) {
+      clear_rvec(*f);
+      sfree(force0);
+      sfree(force1);
+      return   -1.;
+    }
+
+
+    if (dist0 == -1. ) {
+      copy_rvec(*force1,*f);
+      (*f)[pot->dim2] *= -1.;
+      sfree(force0);
+      sfree(force1);
+      return dist1;
+    }
+
+
+    if (dist1 == -1. ) {
+      copy_rvec(*force0,*f);
+      sfree(force0);
+      sfree(force1);
+      return dist0;
+    }
+
+    ///////////////////////////////////////////////
+
+
+
     if (dist0 < dist1 ) {
       copy_rvec(*force0,*f);
       sfree(force0);
@@ -1884,7 +2042,7 @@ real compute_single_force ( t_user_potential *pot,
     pot->type = wpt_SPMBH;
     dist1 = compute_force_membrane(pot,x,force1,f_init);
 
-    if (dist0 == -1.  || dist1 == -1.  ) {
+    if (dist0 == -1. && dist1 == -1. ) {
       clear_rvec(*f);
       sfree(force0);
       sfree(force1);
@@ -1894,51 +2052,93 @@ real compute_single_force ( t_user_potential *pot,
       clear_rvec(*f);
       sfree(force0);
       sfree(force1);
-      return dist0;
+      return -0.5;
     }
-    if (dist0 == -0.5 ) {
+    if (dist0 == -0.5 && dist1 != -1. ) {
       copy_rvec(*force1,*f);
       sfree(force0);
       sfree(force1);
       return dist1;
     }
-    if (dist1 == -0.5 ) {
-      copy_rvec(*force0,*f);
-      sfree(force0);
-      sfree(force1);
-      return dist0;
-    } //(SANDAL) Here it is where it decides what is shorter instead of summing the vector (type 3)
-    /*    if (dist0 < dist1 ) {
+    if (dist1 == -0.5 && dist0 != -1. ) {
       copy_rvec(*force0,*f);
       sfree(force0);
       sfree(force1);
       return dist0;
     }
-    else {
-      copy_rvec(*force1,*f);
-      sfree(force0);
-      sfree(force1);
-      return dist1;
-      } */
 
+    ///////////////////////////////////////
+
+    if (dist0 == -1. && dist1 == -0.5  ) {
+      clear_rvec(*f);
+      sfree(force0);
+      sfree(force1);
+      return   -1.;
+    }
+
+
+    if (dist1 == -1. && dist0 == -0.5  ) {
+      clear_rvec(*f);
+      sfree(force0);
+      sfree(force1);
+      return   -1.;
+    }
+
+
+    if (dist0 == -1. ) {
+      copy_rvec(*force1,*f);
+      //      (*f)[pot->dim2] *= -1.;
+      sfree(force0);
+      sfree(force1);
+      return dist1;
+    }
+
+
+    if (dist1 == -1. ) {
+      copy_rvec(*force0,*f);
+      sfree(force0);
+      sfree(force1);
+      return dist0;
+    }
+
+    /////////////////////////////////////////
+
+
+    //(SANDAL) Here it is where it decides what is shorter instead of summing the vectors (type 3)
+    if (dist0 < dist1 ) {
+      copy_rvec(*force0,*f);
+      sfree(force0);
+      sfree(force1);
+      return dist0;
+    }
     else {
+      copy_rvec(*force1,*f);
+      sfree(force0);
+      sfree(force1);
+      return dist1;
+    } 
+    
+    /*
+      else {
       (*f)[pot->dim0] = (*force0)[pot->dim0] + (*force1)[pot->dim0];
       (*f)[pot->dim1] = (*force0)[pot->dim1] + (*force1)[pot->dim1];
       (*f)[pot->dim2] = (*force0)[pot->dim2] + (*force1)[pot->dim2];
       sfree(force0);
       sfree(force1);
       return;
-
+      
+      }
+    */
+    
   }
-  }
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
   return 0.;
   
 }
@@ -2066,19 +2266,23 @@ init_Wpotential (t_user_potential *pot,
 	get_real_from_file(inp,&(pot->r_protein),"r_protein");
 	get_real_from_file(inp,&(pot->r_panchor),"r_panchor");
 	get_real_from_file(inp,&(pot->smoothen),"smoothen");
-	get_real_from_file(inp,&(pot->z_memb_t),"z_memb_t");
-	get_real_from_file(inp,&(pot->z_memb_b),"z_memb_b");
-	if (pot->z_memb_t < pot->z_memb_b) { real temp;
-	  temp = pot->z_memb_t;
-	  pot->z_memb_t = pot->z_memb_b;
-	  pot->z_memb_b = temp;
-	}
+	
 	get_string_from_file(inp,anchor,"anchor");
-	pot->c_anchor=1.;
-	get_real_from_file(inp,&(pot->c_anchor),"c_anchor");
-	get_int_from_file(inp,&(check),"check");
-	pot->bCheck = (check!=0);
+        pot->c_anchor=1.;
+        get_real_from_file(inp,&(pot->c_anchor),"c_anchor");
+        get_int_from_file(inp,&(check),"check");
+        pot->bCheck = (check!=0);
       }
+      
+      
+      get_real_from_file(inp,&(pot->z_memb_t),"z_memb_t");
+      get_real_from_file(inp,&(pot->z_memb_b),"z_memb_b");
+      if (pot->z_memb_t < pot->z_memb_b) { real temp;
+	temp = pot->z_memb_t;
+	pot->z_memb_t = pot->z_memb_b;
+	pot->z_memb_b = temp;
+      }
+      
       snew(pot->vdw,1);
       pot->vdw->n = 1;
       // EMY_CHECK: Do we want to put n_hs and VDW_reduc_hs in the wpot.dat?
@@ -2328,6 +2532,16 @@ init_Wpotential (t_user_potential *pot,
       
       // EMY_CHANGE: this section was moved inside the if(MASTER(cr)) and improved considering the possible z_memb_* values in the wpot.dat file
       // Default values of alt_lip_max/alt_lip_min and alt_res_max/alt_res_min in the case no lipid or no protein residues are present in the system
+
+
+
+
+      if ( lipnr == 0 ) {
+	alt_lip_max = pot->z_memb_t; alt_lip_min = pot->z_memb_b;
+      }
+  
+
+      /*
       if ( lipnr == 0 ) {
 	if (pot->z_memb_t != 99999 && pot->z_memb_b != 99999) {
 	  if ( pot->lips_nr ) printf("WARNING: No lipid residues found. Membrane position will be read from the wpot.dat file"); 
@@ -2340,8 +2554,23 @@ init_Wpotential (t_user_potential *pot,
 	  alt_lip_max = gc[pot->dim2]; alt_lip_min = gc[pot->dim2];
 	}
       }
-      if ( resnr == 0 ) { alt_res_max = gc[pot->dim2]; alt_res_min = gc[pot->dim2]; }
+      */
       
+      if ( resnr == 0 ) { 
+	gc[pot->dim2] = 0.5*(pot->z_memb_t + pot->z_memb_b);
+	alt_res_max = gc[pot->dim2]; alt_res_min = gc[pot->dim2];
+	
+      }
+      
+
+      
+      ////////////////////////////////////////////
+      gc[pot->dim2] = 0.5*(pot->z_memb_t + pot->z_memb_b);
+      //////////////////////////////////////////////
+      
+      
+
+
   }
   // BROADCAST
   // EMY_CHANGE: this barrier seems to be unnecessary
@@ -2370,7 +2599,7 @@ init_Wpotential (t_user_potential *pot,
     fprintf(stderr,"Building the surface embedding the protein...\n");
     compute_surface_protein(pot,top,state_global,cr);
     fprintf(stderr,"Done !\n");
-      }
+  }
   // BROADCAST
   if (pot->type == wpt_MB || pot->type==wpt_SPMB || pot->type == wpt_SPMBH ) {
     gmx_bcast(sizeof(pot->Surf_radius),&(pot->Surf_radius),cr);
@@ -2537,12 +2766,13 @@ init_Wpotential (t_user_potential *pot,
     if(pot->type==wpt_SP || pot->type==wpt_SPMB || pot->type==wpt_SPH || pot->type==wpt_SPMBH ) {
       fprintf(stderr,"    Total spacing between the planes       %7.3lf (nm)\n",pot->zp_t-pot->zp_b);
       if(pot->type==wpt_SP || pot->type==wpt_SPMB) {
-      fprintf(stderr,"    Radius of upper hemisphere            %7.3lf (nm)\n",pot->r_t);
+	fprintf(stderr,"    Radius of upper hemisphere            %7.3lf (nm)\n",pot->r_t);
       }
       fprintf(stderr,"    Radius of lower hemisphere            %7.3lf (nm)\n",pot->r_b);
     }
+    fprintf(stderr,"    Membrane thickness                    %7.3lf (nm)\n",pot->z_memb_t-pot->z_memb_b);
+    
     if(pot->type==wpt_MB || pot->type==wpt_SPMB || pot->type==wpt_SPMBH ) {
-      fprintf(stderr,"    Membrane thickness                    %7.3lf (nm)\n",pot->z_memb_t-pot->z_memb_b);
       //SANDAL: Surf_radius and Surf_radius_int : Max and min radius of surface coating the protein from the axis of the coating to make calculations of potential faster (TO VERIFY)
       fprintf(stderr,"    Max radius of the inner surface       %7.3lf (nm)\n",pot->Surf_radius);
       fprintf(stderr,"    Min radius of the inner surface       %7.3lf (nm)\n",pot->Surf_radius_int);
@@ -2570,10 +2800,15 @@ init_Wpotential (t_user_potential *pot,
       pot->dist[i] = compute_single_force(pot,&(state_global->x[i]),&(junk[i]),f[i]);
       if (pot->dist[i] < -0.75) compteur++;
     }
-    if(compteur!=0) {fprintf(stderr,"There is (are) %d atom(s) outside of the interacting surfaces, most probably water molecules\n",compteur);
-      fprintf(stderr,"Try larger values for r_plus and z_plus.\n");
-      fprintf(stderr,"Files ff_init.vtk, surface.vtk and surface_sphere.vtk\n");
-      fprintf(stderr,"will be written in order to help you to visualize them.\n\n");}
+
+
+    if (pot->type==wpt_SPMB || pot->type==wpt_SP || pot->type==wpt_MB) {
+      if(compteur!=0) {fprintf(stderr,"There is (are) %d atom(s) outside of the interacting surfaces, most probably water molecules\n",compteur);
+	fprintf(stderr,"Try larger values for r_plus and z_plus.\n");
+	fprintf(stderr,"Files ff_init.vtk, surface.vtk and surface_sphere.vtk\n");
+	fprintf(stderr,"will be written in order to help you to visualize them.\n\n");}
+    }
+    
     
     FILE *vtkout= fopen("ff_init.vtk","w");
     rvec *zero; snew(zero,1); for(i=0;i<3;i++) (*zero)[i]=0.;
@@ -2755,18 +2990,20 @@ init_Wpotential (t_user_potential *pot,
             // real radius = sqrt(pow(i*dx+startx,2)+pow(j*dy+starty,2));
 /*	    radius = sqrt((i*dx+startx)*(i*dx+startx)+(j*dy+starty)*(j*dy+starty));
             if (radius<pot->r_b) xt[i*NN+j][pot->dim2] += sqrt(pot->r_t*pot->r_t - radius*radius); */
-          }}}
+	      }}}
         for(i=0;i<NN;i++) {
           for(j=0;j<NN;j++) {
-            xt[i*NN+j+NN*NN][pot->dim0] = i*dx+startx;
-            xt[i*NN+j+NN*NN][pot->dim1] = j*dy+starty;
-            xt[i*NN+j+NN*NN][pot->dim2] = pot->zp_b;
-            // EMY_CHANGE: More efficient
-            // real radius = sqrt(pow(i*dx+startx,2)+pow(j*dy+starty,2));
-            radius = sqrt((i*dx+startx)*(i*dx+startx)+(j*dy+starty)*(j*dy+starty));
-            if (radius<pot->r_b) xt[i*NN+j+NN*NN][pot->dim2] -= sqrt(pot->r_b*pot->r_b - radius*radius);
-          }}
-
+	    radius = sqrt((i*dx+startx)*(i*dx+startx)+(j*dy+starty)*(j*dy+starty));
+	    if (radius>pot->r_b) {
+	      xt[i*NN+j+NN*NN][pot->dim0] = i*dx+startx;
+	      xt[i*NN+j+NN*NN][pot->dim1] = j*dy+starty;
+	      xt[i*NN+j+NN*NN][pot->dim2] = pot->zp_b;
+	      // EMY_CHANGE: More efficient
+	      // real radius = sqrt(pow(i*dx+startx,2)+pow(j*dy+starty,2));
+	      //            radius = sqrt((i*dx+startx)*(i*dx+startx)+(j*dy+starty)*(j*dy+starty));
+	      //            if (radius<pot->r_b) xt[i*NN+j+NN*NN][pot->dim2] -= sqrt(pot->r_b*pot->r_b - radius*radius);
+	    }}}
+	
         vtkout = fopen("surface_sphere.vtk","w");
         write_points_vtk(vtkout,2*NN*NN,xt,pot->center);
         fclose(vtkout);

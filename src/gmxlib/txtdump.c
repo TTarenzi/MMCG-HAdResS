@@ -720,6 +720,7 @@ void pr_inputrec(FILE *fp,int indent,const char *title,t_inputrec *ir,
 
 
         pr_rvec(fp,indent,"adress_reference_coords",ir->adress->refs,DIM,TRUE);
+        pr_rvec(fp,indent,"adress_reference_coords_lower_h",ir->adress->refs_2,DIM,TRUE);
     }
     PI("userint1",ir->userint1);
     PI("userint2",ir->userint2);

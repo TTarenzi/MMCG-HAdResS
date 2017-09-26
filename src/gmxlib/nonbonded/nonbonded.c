@@ -1181,10 +1181,11 @@ adress_drift_term(FILE *               fplog,
     int            adresstype;
     real           adressr,adressw;
     rvec *         ref;
+    rvec *         ref_2;
     real *         massT;
     real *         wf;
     real *         wfprime;
-    rvec dx;
+    rvec dx, dx_2;
     real r;
     real V, fscal;
     rvec fdrift;
@@ -1197,6 +1198,7 @@ adress_drift_term(FILE *               fplog,
     snew(cgdens, fr->adress_dhdlbins);
     
     ref = &(fr->adress_refs);
+    ref_2 = &(fr->adress_refs_2);
     
     
     *engdelta=0.0;
@@ -1231,10 +1233,12 @@ adress_drift_term(FILE *               fplog,
         if (pbc)
         {
             pbc_dx(pbc,(*ref),x[k0],dx);
+            pbc_dx(pbc,(*ref_2),x[k0],dx_2);
         }
         else
         {
             rvec_sub((*ref),x[k0],dx);
+            rvec_sub((*ref_2),x[k0],dx_2);
         }
 
 
@@ -1283,6 +1287,26 @@ adress_drift_term(FILE *               fplog,
             fdrift[2]=fscal*dx[2]/r;
         }
 
+/////////////////////////////////////////////////
+
+        else if (fr->adress_type == eAdressHemisphere) {
+            
+            if (x[k0][2]> (*ref)[2]) {
+                //gmx_fatal(FARGS,"Deine mutti hat spherical case not implemented!");
+                r=sqrt(dx[0]*dx[0]+dx[1]*dx[1]+dx[2]*dx[2]);
+                fdrift[0]=fscal*dx[0]/r;
+                fdrift[1]=fscal*dx[1]/r;
+                fdrift[2]=fscal*dx[2]/r;
+            } else if (x[k0][2]< (*ref_2)[2]) {
+                r=sqrt(dx_2[0]*dx_2[0]+dx_2[1]*dx_2[1]+dx_2[2]*dx_2[2]);
+                fdrift[0]=fscal*dx_2[0]/r;
+                fdrift[1]=fscal*dx_2[1]/r;
+                fdrift[2]=fscal*dx_2[2]/r;
+            }
+        }
+        
+/////////////////////////////////////////////////
+        
         massfac=1.0;
 
 

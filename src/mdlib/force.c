@@ -608,9 +608,9 @@ void do_force_lowlevel(FILE       *fplog,   gmx_large_int_t step,
         pr_rvecs(debug,0,"fshift after bondeds",fr->fshift,SHIFTS);
     }
 
-    if (fr->adress_type != eAdressOff && fr->adress_do_drift)
+    if (fr->adress_type != eAdressOff && fr->adress_do_drift) {
         adress_drift_term(fplog,cg0,cg1, cg1home,&(top->cgs),x,fr,md,ir->ePBC==epbcNONE ? NULL : &pbc, f, &enerd->term[F_ADR_DELTU]);
-    
+    }
     GMX_MPE_LOG(ev_force_finish);
 
 }

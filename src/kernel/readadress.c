@@ -40,43 +40,59 @@
 
 #define MAXPTR 254
 
-static char adress_refs[STRLEN],adress_tf_grp_names[STRLEN], adress_cg_grp_names[STRLEN];
+static char adress_refs[STRLEN], adress_refs_2[STRLEN], adress_tf_grp_names[STRLEN], adress_cg_grp_names[STRLEN];
 
 void read_adressparams(int *ninp_p,t_inpfile **inp_p,t_adress *adress, warninp_t wi)
 {
-  int     nadress_refs,i;
-  const char *tmp;
-  char    *ptr1[MAXPTR];
+    int     nadress_refs, nadress_refs_2, i;
+    const char *tmp;
+    char    *ptr1[MAXPTR];
+    char    *ptr1_2[MAXPTR];
+    
+    
+    int    ninp;
+    t_inpfile *inp;
+    
+    ninp   = *ninp_p;
+    inp    = *inp_p;
+    
+    EETYPE("adress_type",                adress->type,         eAdresstype_names);
+    RTYPE ("adress_const_wf",            adress->const_wf,     1);
+    RTYPE ("adress_ex_width",            adress->ex_width,     0);
+    RTYPE ("adress_hy_width",            adress->hy_width,     0);
+    RTYPE ("adress_ex_forcecap",         adress->ex_forcecap,     0);
+    EETYPE("adress_interface_correction",adress->icor,         eAdressICtype_names);
+    EETYPE("adress_site",                adress->site,         eAdressSITEtype_names);
+    STYPE ("adress_reference_coords",    adress_refs,             NULL);
+    STYPE ("adress_reference_coords_lower_h",    adress_refs_2,             NULL);
+    STYPE ("adress_tf_grp_names",        adress_tf_grp_names,     NULL);
+    STYPE ("adress_cg_grp_names",        adress_cg_grp_names,     NULL);
+    EETYPE("adress_do_hybridpairs",      adress->do_hybridpairs, yesno_names);
+    EETYPE("adress_do_drift",      adress->do_drift, yesno_names);
+    RTYPE("adress_deltaU", adress->deltaU, 0);
+    EETYPE("adress_onthefly_TI",      adress->onthefly_TI, yesno_names);
+    
+    nadress_refs = str_nelem(adress_refs,MAXPTR,ptr1);
+    
+    for(i=0; (i<nadress_refs); i++) /*read vector components*/
+        adress->refs[i]=strtod(ptr1[i],NULL);
+    for( ;(i<DIM); i++) /*remaining undefined components of the vector set to zero*/
+        adress->refs[i]=0;
+    
+    nadress_refs_2 = str_nelem(adress_refs_2,MAXPTR,ptr1_2);
+    
+    for(i=0; (i<nadress_refs_2); i++) /*read vector components*/
+        adress->refs_2[i]=strtod(ptr1_2[i],NULL);
+    for( ;(i<DIM); i++) /*remaining undefined components of the vector set to zero*/
+        adress->refs_2[i]=0;
 
-
-  int    ninp;
-  t_inpfile *inp;
-
-  ninp   = *ninp_p;
-  inp    = *inp_p;
-
-  EETYPE("adress_type",                adress->type,         eAdresstype_names);
-  RTYPE ("adress_const_wf",            adress->const_wf,     1);
-  RTYPE ("adress_ex_width",            adress->ex_width,     0);
-  RTYPE ("adress_hy_width",            adress->hy_width,     0);
-  RTYPE ("adress_ex_forcecap",         adress->ex_forcecap,     0);
-  EETYPE("adress_interface_correction",adress->icor,         eAdressICtype_names);
-  EETYPE("adress_site",                adress->site,         eAdressSITEtype_names);
-  STYPE ("adress_reference_coords",    adress_refs,             NULL);
-  STYPE ("adress_tf_grp_names",        adress_tf_grp_names,     NULL);
-  STYPE ("adress_cg_grp_names",        adress_cg_grp_names,     NULL);
-  EETYPE("adress_do_hybridpairs",      adress->do_hybridpairs, yesno_names);
-  EETYPE("adress_do_drift",      adress->do_drift, yesno_names);
-  RTYPE("adress_deltaU", adress->deltaU, 0);
-  EETYPE("adress_onthefly_TI",      adress->onthefly_TI, yesno_names);
-  
-  nadress_refs = str_nelem(adress_refs,MAXPTR,ptr1);
-
-  for(i=0; (i<nadress_refs); i++) /*read vector components*/
-    adress->refs[i]=strtod(ptr1[i],NULL);
-  for( ;(i<DIM); i++) /*remaining undefined components of the vector set to zero*/
-    adress->refs[i]=0;
+    
+    
+    
+    
 }
+
+
 
 void do_adress_index(t_adress *adress, gmx_groups_t *groups,char **gnames,t_grpopts *opts,warninp_t wi){
   int nr,i,j,k;

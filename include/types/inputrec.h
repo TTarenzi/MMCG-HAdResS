@@ -336,6 +336,7 @@ typedef struct {
   int  icor;     /* type of interface correction                 */
   int  site;     /* AdResS CG site location                      */
   rvec refs;     /* Coordinates for AdResS reference             */
+  rvec refs_2;     /* Coordinates for AdResS reference             */
   real ex_forcecap; /* in the hybrid zone, cap forces large then this to adress_ex_forcecap */
   gmx_bool do_hybridpairs; /* If true pair interaction forces are also scaled in an adress way*/
   gmx_bool onthefly_TI;

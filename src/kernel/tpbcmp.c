@@ -633,6 +633,7 @@ static void cmp_inputrec(FILE *fp,t_inputrec *ir1,t_inputrec *ir2,real ftol, rea
   cmp_int(fp,"ir->adress->icor" ,-1,ir1->adress->icor,ir2->adress->icor);
   cmp_int(fp,"ir->adress->site" ,-1,ir1->adress->site,ir2->adress->site);
   cmp_rvec(fp,"ir->adress->refs" ,-1,ir1->adress->refs,ir2->adress->refs,ftol,abstol);
+  cmp_rvec(fp,"ir->adress->refs_2" ,-1,ir1->adress->refs_2,ir2->adress->refs_2,ftol,abstol);
   cmp_real(fp,"ir->adress->ex_forcecap", -1,ir1->adress->ex_forcecap,ir2->adress->ex_forcecap,ftol,abstol);
 
   cmp_int(fp,"inputrec->userint1",-1,ir1->userint1,ir2->userint1);

@@ -46,6 +46,7 @@ adress_weight(rvec            x,
               real            adressr,
               real            adressw,
               rvec *          ref,
+              rvec *          ref_2,
               t_pbc *         pbc,
               t_forcerec *         fr )
 {
@@ -53,7 +54,7 @@ adress_weight(rvec            x,
     real l2 = adressr+adressw;
     real sqr_dl,dl;
     real tmp;
-    rvec dx;
+    rvec dx, dx_2;
     real H5, H, H2, l;
 
     sqr_dl = 0.0;
@@ -61,17 +62,19 @@ adress_weight(rvec            x,
     if (pbc) 
     {
         pbc_dx(pbc,(*ref),x,dx);
+        pbc_dx(pbc,(*ref_2),x,dx_2);
     } 
     else 
     {
         rvec_sub((*ref),x,dx);
+        rvec_sub((*ref_2),x,dx_2);
     }
 
     switch(adresstype)
     {
     case eAdressOff:
         /* default to explicit simulation */
-        return 1;
+        return 1.;
     case eAdressConst:              
         /* constant value for weighting function = adressw */
         return fr->adress_const_wf;
@@ -85,9 +88,35 @@ adress_weight(rvec            x,
             sqr_dl    += dx[i]*dx[i];
         }
         break;
+
+/////////////////////////////
+
+    case eAdressHemisphere:
+        ;
+        /* point at center of ref, assuming cubic geometry */
+        real rho = sqrt((x[0]-(*ref)[0])*(x[0]-(*ref)[0]) + (x[1]-(*ref)[1])*(x[1]-(*ref)[1]));        
+
+        if (x[2]<(*ref)[2] && x[2]>(*ref_2)[2] && rho <= adressr)
+            return 1.; // in this case the particle is AT
+        else if (x[2]<(*ref)[2] && x[2]>(*ref_2)[2] && rho > adressr)
+            return 0.; // in this case the particle is CG                                                                                                                                                   
+        else if (x[2]>=(*ref)[2]) {
+            for(i=0;i<3;i++){
+                sqr_dl    += dx[i]*dx[i];
+            }
+        }
+        else if (x[2]<=(*ref_2)[2]) {
+            for(i=0;i<3;i++){
+                sqr_dl    += dx_2[i]*dx_2[i];
+            }
+        }
+        break;
+            
+/////////////////////////////
+
     default:
         /* default to explicit simulation */
-        return 1;
+        return 1.;
     }
     
     dl=sqrt(sqr_dl);
@@ -125,6 +154,7 @@ Dadress_weight(rvec            x,
               real            adressr,
               real            adressw,
               rvec *          ref,
+              rvec *          ref_2,
               t_pbc *         pbc,
               t_forcerec *         fr )
 {
@@ -132,7 +162,7 @@ Dadress_weight(rvec            x,
     real l2 = adressr+adressw;
     real sqr_dl,dl;
     real tmp;
-    rvec dx;
+    rvec dx, dx_2;
     real H5, l, H;
     
     sqr_dl = 0.0;
@@ -140,10 +170,12 @@ Dadress_weight(rvec            x,
     if (pbc)
     {
         pbc_dx(pbc,(*ref),x,dx);
+        pbc_dx(pbc,(*ref_2),x,dx_2);
     }
     else
     {
         rvec_sub((*ref),x,dx);
+        rvec_sub((*ref_2),x,dx_2);
     }
 
     switch(adresstype)
@@ -164,6 +196,32 @@ Dadress_weight(rvec            x,
             sqr_dl    += dx[i]*dx[i];
         }
         break;
+
+/////////////////////////////                                                                                                                                                                                
+
+    case eAdressHemisphere:
+        /* point at center of ref, assuming cubic geometry */
+        ;        
+        real rho = sqrt((x[0]-(*ref)[0])*(x[0]-(*ref)[0]) + (x[1]-(*ref)[1])*(x[1]-(*ref)[1]));
+        
+            if (x[2]<(*ref)[2] && x[2]>(*ref_2)[2] && rho <= adressr)
+                return 0.; // in this case the particle is AT                                                                                                                                                    
+            else if (x[2]<(*ref)[2] && x[2]>(*ref_2)[2] && rho > adressr)
+                return 0.; // in this case the particle is CG                                                                                                                                                   
+            else if (x[2]>=(*ref)[2]) {
+                for(i=0;i<3;i++){
+                    sqr_dl    += dx[i]*dx[i];
+                }
+            }
+            else if (x[2]<=(*ref_2)[2]) {
+                for(i=0;i<3;i++){
+                    sqr_dl    += dx_2[i]*dx_2[i];
+                }
+            }
+        break;
+        
+/////////////////////////////                                                                                                                                                                                
+
     default:
         /* default to explicit simulation */
         return 0;
@@ -212,6 +270,7 @@ update_adress_weights_com(FILE *               fplog,
     int            adresstype;
     real           adressr,adressw;
     rvec *         ref;
+    rvec *         ref_2;
     real *         massT;
     real *         wf;
     real *         wfprime;
@@ -230,6 +289,7 @@ update_adress_weights_com(FILE *               fplog,
     wf                 = mdatoms->wf;
     wfprime                 = mdatoms->wfprime;
     ref                = &(fr->adress_refs);
+    ref_2                = &(fr->adress_refs_2);
 
 
     /* Since this is center of mass AdResS, the vsite is not guaranteed
@@ -253,8 +313,8 @@ update_adress_weights_com(FILE *               fplog,
         nrcg    = k1-k0;
         if (nrcg == 1)
         {
-            wf[k0] = adress_weight(x[k0],adresstype,adressr,adressw,ref,pbc,fr);
-            wfprime[k0] = Dadress_weight(x[k0],adresstype,adressr,adressw,ref,pbc,fr);
+            wf[k0] = adress_weight(x[k0],adresstype,adressr,adressw,ref,ref_2,pbc,fr);
+            wfprime[k0] = Dadress_weight(x[k0],adresstype,adressr,adressw,ref,ref_2,pbc,fr);
             if (wf[k0]==0){ n_cg++;}
             else if (wf[k0]==1){ n_ex++;}
             else {n_hyb++;}
@@ -304,8 +364,8 @@ update_adress_weights_com(FILE *               fplog,
             }
 
             /* Set wf of all atoms in charge group equal to wf of com */
-            wf[k0] = adress_weight(ix,adresstype,adressr,adressw,ref,pbc, fr);
-            wfprime[k0] = Dadress_weight(ix,adresstype,adressr,adressw,ref,pbc,fr);
+            wf[k0] = adress_weight(ix,adresstype,adressr,adressw,ref,ref_2,pbc, fr);
+            wfprime[k0] = Dadress_weight(ix,adresstype,adressr,adressw,ref,ref_2,pbc,fr);
 
             if (wf[k0]==0){ n_cg++;}
             else if (wf[k0]==1){ n_ex++;}
@@ -340,6 +400,7 @@ void update_adress_weights_atom_per_atom(
     int            adresstype;
     real           adressr,adressw;
     rvec *         ref;
+    rvec *         ref_2;
     real *         massT;
     real *         wf;
     real *         wfprime;
@@ -357,7 +418,8 @@ void update_adress_weights_atom_per_atom(
     massT              = mdatoms->massT;
     wf                 = mdatoms->wf;
     ref                = &(fr->adress_refs);
-        wfprime              = mdatoms->wfprime;
+    ref_2                = &(fr->adress_refs_2);
+    wfprime              = mdatoms->wfprime;
 
     cgindex = cgs->index;
 
@@ -372,8 +434,8 @@ void update_adress_weights_atom_per_atom(
         nrcg = k1 - k0;
 
         for (k = (k0); (k < k1); k++) {
-            wf[k] = adress_weight(x[k], adresstype, adressr, adressw, ref, pbc, fr);
-            wfprime[k] = Dadress_weight(x[k],adresstype,adressr,adressw,ref,pbc,fr);
+            wf[k] = adress_weight(x[k], adresstype, adressr, adressw, ref, ref_2, pbc, fr);
+            wfprime[k] = Dadress_weight(x[k],adresstype,adressr,adressw,ref,ref_2,pbc,fr);
             if (wf[k] == 0) {
                 n_cg++;
             } else if (wf[k] == 1) {
@@ -401,6 +463,7 @@ update_adress_weights_cog(t_iparams            ip[],
     t_iatom *      ia;
     real           adressr,adressw;
     rvec *         ref;
+    rvec *         ref_2;
     real *         wf;
     int            n_hyb, n_ex, n_cg;
     
@@ -409,6 +472,7 @@ update_adress_weights_cog(t_iparams            ip[],
     adressw            = fr->adress_hy_width;
     wf                 = mdatoms->wf;
     ref                = &(fr->adress_refs);
+    ref_2                = &(fr->adress_refs_2);
 
 
     n_hyb=0;
@@ -437,7 +501,7 @@ update_adress_weights_cog(t_iparams            ip[],
                 /* The vsite and first constructing atom */
                 avsite     = ia[1];
                 ai         = ia[2];
-                wf[avsite] = adress_weight(x[avsite],adresstype,adressr,adressw,ref,pbc,fr);
+                wf[avsite] = adress_weight(x[avsite],adresstype,adressr,adressw,ref,ref_2,pbc,fr);
                 wf[ai]     = wf[avsite];
 
                 if (wf[ai]  == 0) {
@@ -532,6 +596,7 @@ update_adress_weights_atom(int                  cg0,
     int            adresstype;
     real           adressr,adressw;
     rvec *         ref;
+    rvec *         ref_2;
     real *         massT;
     real *         wf;   
     real *         wfprime;
@@ -542,6 +607,7 @@ update_adress_weights_atom(int                  cg0,
     massT              = mdatoms->massT;
     wf                 = mdatoms->wf;
     ref                = &(fr->adress_refs);
+    ref_2                = &(fr->adress_refs_2);
     cgindex            = cgs->index;
     wfprime              = mdatoms->wfprime;
 
@@ -554,8 +620,8 @@ update_adress_weights_atom(int                  cg0,
     {
         k0      = cgindex[icg];
         k1      = cgindex[icg+1];
-        wf[k0] = adress_weight(x[k0],adresstype,adressr,adressw,ref,pbc,fr);
-        wfprime[k0] = Dadress_weight(x[k0],adresstype,adressr,adressw,ref,pbc,fr);
+        wf[k0] = adress_weight(x[k0],adresstype,adressr,adressw,ref,ref_2,pbc,fr);
+        wfprime[k0] = Dadress_weight(x[k0],adresstype,adressr,adressw,ref,ref_2,pbc,fr);
         
         /* Set wf of all atoms in charge group equal to wf of first atom in charge group*/
         for(k=(k0+1); (k<k1); k++)
@@ -618,11 +684,12 @@ adress_thermo_force(int                  start,
     atom_id *        cgindex;
     unsigned short * ptype;
     rvec *           ref;
+    rvec *           ref_2;
     real *           wf;
     real *           wfprime;
     real             tabscale;
     real *           ATFtab;
-    rvec             dr;
+    rvec             dr, dr_2;
     real             w,wsq,wmin1,wmin1sq,wp,wt,rinv, sqr_dl, dl;
     real             eps,eps2,F,Geps,Heps2,Fp,dmu_dwp,dwp_dr,fscal, VV, Y;
     
@@ -633,6 +700,7 @@ adress_thermo_force(int                  start,
     cgindex          = cgs->index;
     ptype            = mdatoms->ptype;
     ref              = &(fr->adress_refs);
+    ref_2              = &(fr->adress_refs_2);
     wf               = mdatoms->wf;
     wfprime          = mdatoms->wfprime;
     *engdelta=0.0;
@@ -658,7 +726,7 @@ adress_thermo_force(int                  start,
                     /* just on component*/
                         ATFtab = fr->atf_tabs[DEFAULT_TF_TABLE].tab;
                         tabscale = fr->atf_tabs[DEFAULT_TF_TABLE].scale;
-                        printf("atom %d NO COMPENSTATION \n", iatom);
+//                        printf("atom %d NO COMPENSTATION \n", iatom);
                     }
                     
                     fscal            = 0;
@@ -668,10 +736,12 @@ adress_thermo_force(int                  start,
                    if (pbc)
                     {
                         pbc_dx(pbc,(*ref),x[iatom],dr);
+                        pbc_dx(pbc,(*ref_2),x[iatom],dr_2);
                     }
                     else
                     {
                         rvec_sub((*ref),x[iatom],dr);
+                        rvec_sub((*ref_2),x[iatom],dr_2);
                     }
 
                     switch(adresstype)
@@ -688,9 +758,36 @@ adress_thermo_force(int                  start,
                         }
                         rinv             = gmx_invsqrt(sqr_dl);
                         break;
+                        
+                        
+/////////////////////////////////////////////////////
+                        
+                    case eAdressHemisphere:
+                        if (x[iatom][2]>=(*ref)[2]) {
+                            /* point at center of ref, assuming cubic geometry */
+                            for(i=0;i<3;i++){
+                                sqr_dl    += dr[i]*dr[i];
+                            }
+                        } else if (x[iatom][2]<=(*ref_2)[2]) {
+                            for(i=0;i<3;i++){
+                                sqr_dl    += dr_2[i]*dr_2[i];
+                            }
+                        }
+                        rinv             = gmx_invsqrt(sqr_dl);
+                        break;
+                        
+                        
+/////////////////////////////////////////////////////
+                        
+                        
                     default:
                         /* This case should not happen */
                         rinv = 0.0;
+                    }
+
+
+                    if (x[iatom][2]<=(*ref_2)[2]) {
+                        copy_rvec(dr_2, dr);
                     }
 
                     
@@ -721,6 +818,18 @@ adress_thermo_force(int                  start,
                         f[iatom][1]    += fscal*dr[1]*rinv;
                         f[iatom][2]    += fscal*dr[2]*rinv;
                     }
+
+/////////////////////////////////////////////////////////
+
+
+                    else if (adresstype == eAdressHemisphere)
+                    {
+                        f[iatom][0]    += fscal*dr[0]*rinv;
+                        f[iatom][1]    += fscal*dr[1]*rinv;
+                        f[iatom][2]    += fscal*dr[2]*rinv;
+                    }
+
+/////////////////////////////////////////////////////////
 
                 }       
             }

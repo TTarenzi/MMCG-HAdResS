@@ -70,6 +70,7 @@ adress_weight(rvec             x,
               real             adressr,
               real             adressw,
               rvec *           ref,
+              rvec *           ref_2,
               t_pbc *          pbc,
               t_forcerec *         fr);
 
@@ -172,6 +173,7 @@ Dadress_weight(rvec            x,
               real            adressr,
               real            adressw,
               rvec *          ref,
+              rvec *          ref_2,
               t_pbc *         pbc,
               t_forcerec *         fr );
 

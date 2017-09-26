@@ -218,7 +218,7 @@ const char *eMultentOpt_names[eMultentOptNR+1] = {
 };
 
 const char *eAdresstype_names[eAdressNR+1] = {
-  "off","constant", "xsplit", "sphere", NULL 
+  "off","constant", "xsplit", "sphere", "hemisphere", NULL 
 };
 
 const char *eAdressICtype_names[eAdressICNR+1] = {
